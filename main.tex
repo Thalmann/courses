@@ -15,11 +15,20 @@ Bruno Thalmann\\
 \chapter*{Database Systems}
 
 \section{Miniproject Part 1}
-The database is comprised of the following tables.
-The notation \textbf{\textit{Data}Id} refers to the id attribute in the \textit{Data} table.
+The following is a description of our database design of a movie database, at the beginning of the Database Systems course.
+It is therefore our own attempt at designing the database.
+
+The presentation in this section consists of the tables of database.
+The tables are filled with some example entries to exemplify the usage of the database, as well as a textual description of the design.
+
+The notation \textbf{\textit{Data}Id} is used to refer to the id attribute in the \textit{Data} table.
 That is, \textit{MovieID} in actors refers to the ID attribute in the \textit{Movies} table.
+\stefan{jeg har beholdt dette afsnit, men det er måske lidt out of place her}
 
 \subsection{Movies}
+The table movies contains all the movies in the database. 
+A movie entry consists of an id, a title and the year the movie was released.
+Additional information about the movie is available by looking up the movie id in the tables ``actors'', ``directors'', ``writers'' and ``awards''
 
 \paragraph{Movies}
 \begin{center}
@@ -157,7 +166,12 @@ E.g. ''Helena Bonham Carter'' with \textit{PersonID} 10 won the \textit{Award} w
 \end{center}
 
 \subsection{Ratings}
-
+Each rating is connected with a UserID and a MovieID.
+Fx if we look at the rating with ID 3, the rating is \textit{61}.
+The UserID attached to the rating is 1, this means we can look up that user in the users table.
+The user with the ID 1 is \textit{Stufkan}.
+The movie attached to the rating has ID 0.
+If we look in the movies table the movie with ID 0 is \textit{The Incredible Hulk}.
 \paragraph{Ratings}
 
 \begin{center}
@@ -165,14 +179,14 @@ E.g. ''Helena Bonham Carter'' with \textit{PersonID} 10 won the \textit{Award} w
 \hline
 \multicolumn{4}{|c|}{Ratings} \\ \hline \hline
 \textbf{ID} & \textbf{Rating} & \textbf{UserID} & \textbf{MovieID} \\ \hline \hline
-0 & 80 & 0 & 1 \\ \hline
-1 & 65 & 0 & 0 \\ \hline
-2 & 32 & 1 & 1 \\ \hline
-3 & 61 & 1 & 0 \\ \hline
-4 & 12 & 2 & 1 \\ \hline
-5 & 64 & 3 & 0 \\ \hline
-6 & 99 & 4 & 1 \\ \hline
-7 & 55 & 4 & 0 \\ \hline
+1 & 80 & 0 & 1 \\ \hline
+2 & 65 & 0 & 0 \\ \hline
+3 & 32 & 1 & 1 \\ \hline
+4 & 61 & 1 & 0 \\ \hline
+5 & 12 & 2 & 1 \\ \hline
+6 & 64 & 3 & 0 \\ \hline
+7 & 99 & 4 & 1 \\ \hline
+8 & 55 & 4 & 0 \\ \hline
 \end{tabular}
 \end{center}
 
@@ -183,10 +197,10 @@ E.g. ''Helena Bonham Carter'' with \textit{PersonID} 10 won the \textit{Award} w
 \hline
 \multicolumn{4}{|c|}{Users} \\ \hline \hline
 \textbf{ID} & \textbf{Username} & \textbf{Email} & \textbf{Password} \\ \hline \hline
-0 & VisualStudioGuy & visualstudioguy@gmail.com & 123456 \\ \hline
-1 & Stufkan & stufkan@gmail.com & 654321 \\ \hline
-2 & GermanGuy & germanguy@gmail.com & bold1234 \\ \hline
-3 & PizzaGuy & pizzaguy@gmail.com & pizza1234 \\ \hline
+1 & VisualStudioGuy & visualstudioguy@gmail.com & 123456 \\ \hline
+2 & Stufkan & stufkan@gmail.com & 654321 \\ \hline
+3 & GermanGuy & germanguy@gmail.com & bold1234 \\ \hline
+4 & PizzaGuy & pizzaguy@gmail.com & pizza1234 \\ \hline
 \end{tabular}
 \end{center}
 
