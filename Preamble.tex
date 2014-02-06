@@ -1,0 +1,23 @@
+\documentclass{report}
+\renewcommand*\thesection{\arabic{section}}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[linesnumbered, lined, noend]{algorithm2e}
+\usepackage{todonotes}
+%\usepackage[cm]{fullpage}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,       % color of internal links                   red
+    citecolor=black,       % color of links to bibliography            green
+    filecolor=black,       % color of file links                       magenta
+    urlcolor=blue         % color of external links                   cyan
+    }
+\newcommand{\BigTheta}[1]{\ensuremath{\operatorname{\Theta}\bigl(#1\bigr)}}
+
+\newcommand{\AND}{\wedge}
+\newcommand{\OR}{\vee}
+\newcommand{\stefan}[1]{\todo[inline,color=red]{#1}}
+\newcommand{\mikkel}[1]{\todo[inline,color=yellow]{#1}}
+\newcommand{\bruno}[1]{\todo[inline,color=blue]{#1}}
+\newcommand{\mikael}[1]{\todo[inline,color=green]{#1}}
