@@ -107,11 +107,15 @@ Additional information about the movie is available by looking up the movie id i
 Awards consists of four tables, in order to handle linking an award to the appropriate type, organization and movie.
 
 \paragraph{Awards} is the main table, linking all the data together.
+It consists of the following five properties.
 
-It consists of the appropriate year when the award was, well, awarded.
+Like all other tables it contains an ID.
 
-It then consists of an \textit{AwardTypeID}, linking it to an \textit{AwardType}, and an \textit{AwardOrganizationID} linking it to \textit{AwardOrganization}.
-This is done to avoid inconsistencies when querying and redundant data.
+\textit{Year} is the appropriate year when the award was awarded.
+
+\textit{AwardTypeID} links it to an \textit{AwardType}.
+\textit{AwardOrganizationID} links it to an \textit{AwardOrganization}.
+This is done to avoid inconsistencies when querying and to avoid redundant data.
 
 The final property is \textit{MovieID}, linking it to the appropriate \textit{Movie}.
 
