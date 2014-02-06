@@ -95,7 +95,17 @@ That is, \textit{MovieID} in actors refers to the ID attribute in the \textit{Mo
 
 \subsection{Awards}
 
-\paragraph{Awards}
+Awards consists of four tables, in order to handle linking an award to the appropriate type, organization and movie.
+
+\paragraph{Awards} is the main table, linking all the data together.
+
+It consists of the appropriate year when the award was, well, awarded.
+
+It then consists of an \textit{AwardTypeID}, linking it to an \textit{AwardType}, and an \textit{AwardOrganizationID} linking it to \textit{AwardOrganization}.
+This is done to avoid inconsistencies when querying and redundant data.
+
+The final property is \textit{MovieID}, linking it to the appropriate \textit{Movie}.
+
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|}
 \hline
@@ -108,7 +118,8 @@ That is, \textit{MovieID} in actors refers to the ID attribute in the \textit{Mo
 \end{tabular}
 \end{center}
 
-\paragraph{AwardWinners}
+\paragraph{AwardWinners} is used to link a \textit{Person} to an \textit{Award}.
+E.g. ''Helena Bonham Carter'' with \textit{PersonID} 10 won the \textit{Award} with \textit{AwardID} 1.
 
 \begin{center}
 \begin{tabular}{|l|l|l|}
