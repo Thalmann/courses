@@ -19,6 +19,8 @@ The database is comprised of the following tables.
 The notation \textbf{\textit{Data}Id} refers to the id attribute in the \textit{Data} table.
 That is, \textit{MovieID} in actors refers to the ID attribute in the \textit{Movies} table.
 
+\subsection{Movies}
+
 \noindent\begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{3}{|c|}{Movies} \\ \hline
@@ -27,11 +29,27 @@ ID & Titel & Year \\ \hline
 2 & Fight Club & 1999 \\ \hline
 \end{tabular}
 
-\noindent\begin{tabular}{|l|l|l|l|l|}
+\subsection{People}
+
+\paragraph{People}
+
+\noindent\begin{tabular}{|l|l|l|l|l|l|}
 \hline
-\multicolumn{5}{|c|}{People} \\ \hline
-ID & Name & Birthdate & Nationality & Sex \\ \hline
+\multicolumn{6}{|c|}{People} \\ \hline
+ID & FirstName & LastName & Birthdate & Nationality & Sex \\ \hline
+7 & Edward & Norton & 18-08-1969 & US & Male \\ \hline
+9 & Brad & Pitt & 18-12-1963 & US & Male \\ \hline
+10 & Helena & Bonham Carter & 26-05-1966 & UK & Female \\ \hline
+13 & David & Fincher & 28-08-1962 & US & Male \\ \hline
+14 & Chuck & Palahniuk & 21-02-1962 & US & Male \\ \hline
+15 & Jim & Uhls & 25-03-1957 & US & Male \\ \hline
+21 & Liv & Tyler & 01-07-1977 & US & Female \\ \hline
+22 & Tim & Roth & 14-03-1961 & UK & Male \\ \hline
+23 & Louis & Leterrier & 17-06-1973 & Fr & Male \\ \hline
+24 & Zak & Penn & 00-00-1968 & N/A & Male \\ \hline
 \end{tabular}
+
+\paragraph{Actors}
 
 \noindent\begin{tabular}{|l|l|l|l|}
 \hline
@@ -45,6 +63,8 @@ ID & RoleName & PersonID & MovieID \\ \hline
 6 & Emil Blonsky & b & 2 \\\hline 
 \end{tabular}
 
+\paragraph{Directors}
+
 \noindent\begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{3}{|c|}{Directors} \\ \hline
@@ -52,6 +72,8 @@ ID & PersonID & MovieID \\ \hline
 1 & a & 2 \\ \hline
 2 & b & 1 \\ \hline
 \end{tabular}
+
+\paragraph{Writers}
 
 \noindent\begin{tabular}{|l|l|l|}
 \hline
@@ -62,29 +84,54 @@ ID & PersonID & MovieID\\ \hline
 1 & c & 2 \\ \hline
 \end{tabular}
 
+\subsection{Awards}
+
+\paragraph{Awards}
+
 \noindent\begin{tabular}{|l|l|l|l|l|}
 \hline
 \multicolumn{5}{|c|}{Awards} \\ \hline
-ID & Year & AwardTypeID & OrganizationID & MovieID \\ \hline
+ID & Year & AwardTypeID & AwardOrganizationID & MovieID \\ \hline \hline
+1 & 2000 & 1 & 1 & 2 \\ \hline
+2 & 2001 & 2 & 2 & 2 \\ \hline
+2 & 2001 & 3 & 2 & 2 \\ \hline
+2 & 2001 & 4 & 2 & 2 \\ \hline
 \end{tabular}
+
+\paragraph{AwardWinners}
 
 \noindent\begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{3}{|c|}{AwardWinners} \\ \hline
-ID & AwardID & PersonID \\ \hline
+ID & AwardID & PersonID \\ \hline \hline
+1 & 1 & 10 \\ \hline
 \end{tabular}
+
+\paragraph{AwardTypes}
 
 \noindent\begin{tabular}{|l|l|}
 \hline
 \multicolumn{2}{|c|}{AwardTypes} \\ \hline
-ID & Title \\ \hline
+ID & Title \\ \hline \hline
+1 & Best British Actress \\ \hline
+2 & Best DVD \\ \hline
+3 & Best DVD Special Features \\ \hline
+4 & Best DVD Commentary \\ \hline
 \end{tabular}
+
+\paragraph{AwardOrganizations}
 
 \noindent\begin{tabular}{|l|l|}
 \hline
-\multicolumn{2}{|c|}{Organizations} \\ \hline
-OrgranizationID & Name \\ \hline
+\multicolumn{2}{|c|}{AwardOrganizations} \\ \hline
+ID & Name \\ \hline \hline
+1 & Empire Awards, UK \\ \hline
+2 & Online Film Critics Society Awards \\ \hline
 \end{tabular}
+
+\subsection{Ratings}
+
+\paragraph{Ratings}
 
 \noindent\begin{tabular}{|l|l|l|l|}
 \hline
@@ -99,6 +146,8 @@ ID & Rating & UserID & MovieID \\ \hline \hline
 6 & 99 & 4 & 1 \\ \hline
 7 & 55 & 4 & 0 \\ \hline
 \end{tabular}
+
+\paragraph{Users}
 
 \noindent\begin{tabular}{|l|l|l|l|}
 \hline
