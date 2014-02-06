@@ -19,15 +19,18 @@ The database is comprised of the following tables.
 The notation \textbf{\textit{Data}Id} refers to the id attribute in the \textit{Data} table.
 That is, \textit{MovieID} in actors refers to the ID attribute in the \textit{Movies} table.
 
-\noindent\begin{tabular}{|l|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{3}{|c|}{Movies} \\ \hline
 ID & Titel & Year \\ \hline
 1 & The Incredible Hulk & 2008 \\ \hline
 2 & Fight Club & 1999 \\ \hline
 \end{tabular}
+\end{center}
 
-\noindent\begin{tabular}{|l|l|l|l|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|}
 \hline
 \multicolumn{6}{|c|}{People} \\ \hline
 ID & FirstName & LastName & Birthdate & Nationality & Sex \\ \hline
@@ -42,8 +45,10 @@ ID & FirstName & LastName & Birthdate & Nationality & Sex \\ \hline
 23 & Louis & Leterrier & 17-06-1973 & Fr & Male \\ \hline
 24 & Zak & Penn & 00-00-1968 & N/A & Male \\ \hline
 \end{tabular}
+\end{center}
 
-\noindent\begin{tabular}{|l|l|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
 \hline
 \multicolumn{4}{|c|}{Actors} \\ \hline
 ID & RoleName & PersonID & MovieID \\ \hline
@@ -54,20 +59,26 @@ ID & RoleName & PersonID & MovieID \\ \hline
 5 & Betty Ross & a & 1 \\ \hline
 6 & Emil Blonsky & b & 2 \\\hline 
 \end{tabular}
+\end{center}
 
-\noindent\begin{tabular}{|l|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{3}{|c|}{Directors} \\ \hline
 ID & PersonID & MovieID \\ \hline
 \end{tabular}
+\end{center}
 
-\noindent\begin{tabular}{|l|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{3}{|c|}{Writers} \\ \hline
 ID & PersonID & MovieID\\ \hline
 \end{tabular}
+\end{center}
 
-\noindent\begin{tabular}{|l|l|l|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
 \hline
 \multicolumn{5}{|c|}{Awards} \\ \hline
 ID & Year & AwardTypeID & OrganizationID & MovieID \\ \hline \hline
@@ -76,15 +87,19 @@ ID & Year & AwardTypeID & OrganizationID & MovieID \\ \hline \hline
 2 & 2001 & 3 & 2 & 2 \\ \hline
 2 & 2001 & 4 & 2 & 2 \\ \hline
 \end{tabular}
+\end{center}
 
-\noindent\begin{tabular}{|l|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{3}{|c|}{AwardWinners} \\ \hline
 ID & AwardID & PersonID \\ \hline \hline
 1 & 1 & 10 \\ \hline
 \end{tabular}
+\end{center}
 
-\noindent\begin{tabular}{|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|}
 \hline
 \multicolumn{2}{|c|}{AwardTypes} \\ \hline
 ID & Title \\ \hline \hline
@@ -93,16 +108,20 @@ ID & Title \\ \hline \hline
 3 & Best DVD Special Features \\ \hline
 4 & Best DVD Commentary \\ \hline
 \end{tabular}
+\end{center}
 
-\noindent\begin{tabular}{|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|}
 \hline
 \multicolumn{2}{|c|}{Organizations} \\ \hline
 OrganisationID & Name \\ \hline \hline
 1 & Empire Awards, UK \\ \hline
 2 & Online Film Critics Society Awards \\ \hline
 \end{tabular}
+\end{center}
 
-\noindent\begin{tabular}{|l|l|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
 \hline
 \multicolumn{4}{|c|}{Ratings} \\ \hline
 ID & Rating & UserID & MovieID \\ \hline \hline
@@ -115,8 +134,10 @@ ID & Rating & UserID & MovieID \\ \hline \hline
 6 & 99 & 4 & 1 \\ \hline
 7 & 55 & 4 & 0 \\ \hline
 \end{tabular}
+\end{center}
 
-\noindent\begin{tabular}{|l|l|l|l|}
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
 \hline
 \multicolumn{4}{|c|}{Users} \\ \hline
 ID & Username & Email & Password \\ \hline \hline
@@ -125,5 +146,6 @@ ID & Username & Email & Password \\ \hline \hline
 2 & GermanGuy & germanguy@gmail.com & bold1234 \\ \hline
 3 & PizzaGuy & pizzaguy@gmail.com & pizza1234 \\ \hline
 \end{tabular}
+\end{center}
 
 \end{document}
