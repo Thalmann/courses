@@ -24,7 +24,7 @@ The tables are filled with some example entries to exemplify the usage of the da
 \subsection{General notation}
 The notation \textbf{\textit{Data}Id} is used to refer to the id attribute in the \textit{Data} table.
 That is, \textit{MovieID} in actors refers to the ID attribute in the \textit{Movies} table.
-\stefan{jeg har beholdt dette afsnit, men det er måske lidt out of place her}
+\stefan{jeg har beholdt dette afsnit, men det er mï¿½ske lidt out of place her}
 
 \subsection{Movies}
 The table movies contains all the movies in the database. 
@@ -156,7 +156,7 @@ E.g. ''Helena Bonham Carter'' with \textit{PersonID} 10 won the \textit{Award} w
 \end{tabular}
 \end{center}
 
-\paragraph{AwardTypes}
+\paragraph{AwardTypes} is used to link an \textit{Award} to an \textit{AwardType}, this is done to avoid inconsistencies when querying and to avoid redundant data, in case more awards have the same/similar type.
 
 \begin{center}
 \begin{tabular}{|l|l|}
@@ -170,7 +170,8 @@ E.g. ''Helena Bonham Carter'' with \textit{PersonID} 10 won the \textit{Award} w
 \end{tabular}
 \end{center}
 
-\paragraph{AwardOrganizations}
+\paragraph{AwardOrganizations} is used to link and \textit{Award} to an \textit{AwardOrganization}.
+Like \textit{AwardType}, this is done to avoid inconsistencies/redundancies.
 
 \begin{center}
 \begin{tabular}{|l|l|}
