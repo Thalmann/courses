@@ -146,7 +146,12 @@ ID & Name \\ \hline \hline
 \end{center}
 
 \subsection{Ratings}
-
+Each rating is connected with a UserID and a MovieID.
+Fx if we look at the rating with ID 3, the rating is \textit{61}.
+The UserID attached to the rating is 1, this means we can look up that user in the users table.
+The user with the ID 1 is \textit{Stufkan}.
+The movie attached to the rating has ID 0.
+If we look in the movies table the movie with ID 0 is \textit{The Incredible Hulk}.
 \paragraph{Ratings}
 
 \begin{center}
@@ -154,14 +159,14 @@ ID & Name \\ \hline \hline
 \hline
 \multicolumn{4}{|c|}{Ratings} \\ \hline
 ID & Rating & UserID & MovieID \\ \hline \hline
-0 & 80 & 0 & 1 \\ \hline
-1 & 65 & 0 & 0 \\ \hline
-2 & 32 & 1 & 1 \\ \hline
-3 & 61 & 1 & 0 \\ \hline
-4 & 12 & 2 & 1 \\ \hline
-5 & 64 & 3 & 0 \\ \hline
-6 & 99 & 4 & 1 \\ \hline
-7 & 55 & 4 & 0 \\ \hline
+1 & 80 & 0 & 1 \\ \hline
+2 & 65 & 0 & 0 \\ \hline
+3 & 32 & 1 & 1 \\ \hline
+4 & 61 & 1 & 0 \\ \hline
+5 & 12 & 2 & 1 \\ \hline
+6 & 64 & 3 & 0 \\ \hline
+7 & 99 & 4 & 1 \\ \hline
+8 & 55 & 4 & 0 \\ \hline
 \end{tabular}
 \end{center}
 
@@ -172,10 +177,10 @@ ID & Rating & UserID & MovieID \\ \hline \hline
 \hline
 \multicolumn{4}{|c|}{Users} \\ \hline
 ID & Username & Email & Password \\ \hline \hline
-0 & VisualStudioGuy & visualstudioguy@gmail.com & 123456 \\ \hline
-1 & Stufkan & stufkan@gmail.com & 654321 \\ \hline
-2 & GermanGuy & germanguy@gmail.com & bold1234 \\ \hline
-3 & PizzaGuy & pizzaguy@gmail.com & pizza1234 \\ \hline
+1 & VisualStudioGuy & visualstudioguy@gmail.com & 123456 \\ \hline
+2 & Stufkan & stufkan@gmail.com & 654321 \\ \hline
+3 & GermanGuy & germanguy@gmail.com & bold1234 \\ \hline
+4 & PizzaGuy & pizzaguy@gmail.com & pizza1234 \\ \hline
 \end{tabular}
 \end{center}
 
