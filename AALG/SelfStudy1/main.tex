@@ -4,12 +4,13 @@
 
 \begin{titlepage}
 \centering
-{\LARGE Database System - Mini-project}
+{\LARGE Advanced Algorithms - Self-Study 1}
 \HRule \\[0.5cm]
 Bruno Thalmann\\
 			Mikael E. Christensen\\
 			Mikkel S. Larsen\\
-			Stefan M. G. Micheelsen
+			Stefan M. G. Micheelsen\\
+			Martin Rasmussen
 \end{titlepage}
 
 \chapter*{Self-Study 1}
@@ -46,4 +47,16 @@ Since the only difference between the two is values of the swapped completion ti
 $$c_j + c_{j+1} - (c'_j + c'_{j+1})= p_j - p_{j + 1} \leq 0$$
 This shows that the summed completion time after swapping the two tasks is greater than the summed completion time before swapping the two.
 Thus we have proved that the ordering is optimal.
+
+\section*{CLRS 15-1}
+Bruteforce algorithm:
+
+\begin{algorithm}[H]
+GETMAX(v,t)
+\\
+\If{v=t}{return 0}
+\For{each(e in v.E)}{d = GETMAX(e.end, t) + e.w \\ \If{d $\ge$ dist}{dist = d}}
+return dist
+\end{algorithm}
+The complexity for this algorithm is $e^e$.
 \end{document}
