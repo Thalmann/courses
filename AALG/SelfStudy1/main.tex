@@ -71,4 +71,13 @@ The complexity for this algorithm is $e^e$.
 \item{Construct solution from rememberings: Use parent pointers for vertices to combine vertices with highest accumulated weight into a path with longest weight}
 \end{itemize}
 
+\stefan{skriv initialisering}
+\begin{algorithm}[H]
+GETMAX(v,t)\\
+\If{table[v] $> - \infty $}{return table[v]}
+\ForEach{e in v.E}{d = GETMAX(e.end,t) + e.w\\
+\If{d $ > $ table[v]}{table[v]=d}} 
+return table[v]
+\end{algorithm}
+
 \end{document}
