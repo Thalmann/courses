@@ -4,12 +4,13 @@
 
 \begin{titlepage}
 \centering
-{\LARGE Database System - Mini-project}
+{\LARGE Advanced Algorithms - Self-Study 1}
 \HRule \\[0.5cm]
 Bruno Thalmann\\
 			Mikael E. Christensen\\
 			Mikkel S. Larsen\\
-			Stefan M. G. Micheelsen
+			Stefan M. G. Micheelsen\\
+			Martin Rasmussen
 \end{titlepage}
 
 \chapter*{Self-Study 1}
@@ -36,4 +37,15 @@ We now determine the completion time $c_i$ of the tasks.
 $c_j=p_1+p_2+\dots+p_{j-1}+p_j + p_{j+1} + p_{j+2} + \dots + p_n$\\
 $c_{j}=p_1+p_2+\dots+p_{j-1}+p_j + p_{j+1} + p_{j+2} + \dots + p_n$\\
 
+\section*{CLRS 15-1}
+Bruteforce algorithm:
+
+\begin{algorithm}[H]
+GETMAX(v,t)
+\\
+\If{v=t}{return 0}
+\For{each(e in v.E)}{d = GETMAX(e.end, t) + e.w \\ \If{d $\ge$ dist}{dist = d}}
+return dist
+\end{algorithm}
+The complexity for this algorithm is $e^e$.
 \end{document}
