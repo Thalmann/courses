@@ -56,10 +56,11 @@ Thus we have proved that the ordering is optimal.
 GETMAX(v,t)
 \\
 \If{v=t}{return 0}
-\For{each(e in v.E)}{d = GETMAX(e.end, t) + e.w \\ \If{d $\ge$ dist}{dist = d}}
+dist $= -\infty$\\
+\ForEach{e in v.E}{d = GETMAX(e.end, t) + e.w \\ \If{d $\ge$ dist}{dist = d}}
 return dist
 \end{algorithm}
-The complexity for this algorithm is $e^e$.
+The complexity for this algorithm is $2^V$.
 
 \subsection*{Dynamic Programming Algorithm design:}
 
