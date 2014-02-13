@@ -37,8 +37,9 @@ We now determine the completion time $c_i$ of the tasks.
 $c_j=p_1+p_2+\dots+p_{j-1}+p_j + p_{j+1} + p_{j+2} + \dots + p_n$\\
 $c_{j}=p_1+p_2+\dots+p_{j-1}+p_j + p_{j+1} + p_{j+2} + \dots + p_n$\\
 
-\section*{CLRS 15-1}
-Bruteforce algorithm:
+\section*{Exercise 2 (CLRS 15-1)}
+
+\subsection*{Bruteforce algorithm:}
 
 \begin{algorithm}[H]
 GETMAX(v,t)
@@ -48,4 +49,15 @@ GETMAX(v,t)
 return dist
 \end{algorithm}
 The complexity for this algorithm is $e^e$.
+
+\subsection*{Dynamic Programming Algorithm design:}
+
+\begin{itemize}
+\item{Each step: Choose next edge to pursue}
+\item{Sub-problems: Choose next edge going out of vertice obtained from previously pursued edge}
+\item{Trivial sub-problems: Return distance 0 when current vertice is equal to $t$ (goal vertice)}
+\item{Remember optimal choices: Table with vertices and their greatest accumulated weight}
+\item{Construct solution from rememberings: Use parent pointers for vertices to combine vertices with highest accumulated weight into a path with longest weight}
+\end{itemize}
+
 \end{document}
