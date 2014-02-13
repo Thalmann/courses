@@ -1,0 +1,39 @@
+\include{Preamble}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\begin{document}
+
+\begin{titlepage}
+\centering
+{\LARGE Database System - Mini-project}
+\HRule \\[0.5cm]
+Bruno Thalmann\\
+			Mikael E. Christensen\\
+			Mikkel S. Larsen\\
+			Stefan M. G. Micheelsen
+\end{titlepage}
+
+\chapter*{Self-Study 1}
+
+\section*{CLRS 16-2, part a}
+We wish to minimize the average completion time of the tasks, defined as:
+$$\frac{1}{n}\sum_{i=1}^{n}c_i$$
+As $\frac{1}{n}$ is a constant, the problem is equivalent to minimizing:
+$$\sum_{i=1}^{n}c_i$$
+
+To do this we simply sort the tasks by their processing time $p_i$, in ascending order.
+Below we prove that this ordering minimizes the average completion time.
+
+\paragraph{Proof}
+Let $A$ be a list of tasks ordered as above.
+We will then show that swapping two tasks will result in a larger average running time.
+
+Let $a_j$ and $a_k$, where $j < k$ be two distinct tasks in $A$.
+Note that we have that $p_j \leq p_k$ due to the ordering of tasks.
+
+We now determine the completion time $c_i$ of the tasks.
+
+
+$c_j=p_1+p_2+\dots+p_{j-1}+p_j + p_{j+1} + p_{j+2} + \dots + p_n$\\
+$c_{j}=p_1+p_2+\dots+p_{j-1}+p_j + p_{j+1} + p_{j+2} + \dots + p_n$\\
+
+\end{document}
