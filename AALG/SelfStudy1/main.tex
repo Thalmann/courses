@@ -27,13 +27,23 @@ Below we prove that this ordering minimizes the average completion time.
 Let $A$ be a list of tasks ordered as above.
 We will then show that swapping two tasks will result in a larger average running time.
 
-Let $a_j$ and $a_k$, where $j < k$ be two distinct tasks in $A$.
-Note that we have that $p_j \leq p_k$ due to the ordering of tasks.
+Let $a_j$ and $a_{j+1}$, be two tasks in $A$.
+Note that we have that $p_j \leq p_{j+1}$ due to the ordering of tasks.
 
-We now determine the completion time $c_i$ of the tasks.
+Since we only swap two adjacent tasks in $A$ we know that all tasks $a_1, \cdots, a_{j-1}$ have the same completion time before and after the swap.
+The same is true for all tasks $a_{j+2},\cdots,a_n$.
 
+We now determine the completion time $c_j$ and $c_{j+1}$ for the two tasks before the swap:
+$$c_j=p_1+p_2+\dots+p_{j-1}+p_j$$
+$$c_{j+1}=p_1+p_2+\dots+p_{j-1}+p_j + p_{j+1}$$
 
-$c_j=p_1+p_2+\dots+p_{j-1}+p_j + p_{j+1} + p_{j+2} + \dots + p_n$\\
-$c_{j}=p_1+p_2+\dots+p_{j-1}+p_j + p_{j+1} + p_{j+2} + \dots + p_n$\\
+We can also determine completion times after the swap:
+$$c'_j=p_1+p_2+\dots+p_{j-1}+p_{j+1}$$
+$$c'_{j+1}=p_1+p_2+\dots+p_{j-1}+p_{j+1} + p_j$$
 
+We subtract the sum of completion times after the swap from the sum of completion times before the swap.
+Since the only difference between the two is values of the swapped completion times, we simply look at the difference between these:
+$$c_j + c_{j+1} - (c'_j + c'_{j+1})= p_j - p_{j + 1} \leq 0$$
+This shows that the summed completion time after swapping the two tasks is greater than the summed completion time before swapping the two.
+Thus we have proved that the ordering is optimal.
 \end{document}
