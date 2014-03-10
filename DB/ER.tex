@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{tikz-er2}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+
+\tikzstyle{every entity} = [top color=white, bottom color=blue!30, 
+                            draw=blue!50!black!100, drop shadow]
+\tikzstyle{every weak entity} = [drop shadow={shadow xshift=.7ex, 
+                                 shadow yshift=-.7ex}]
+\tikzstyle{every attribute} = [top color=white, bottom color=yellow!20, 
+                               draw=yellow, node distance=1cm, drop shadow]
+\tikzstyle{every relationship} = [top color=white, bottom color=red!20, 
+                                  draw=red!50!black!100, drop shadow]
+\tikzstyle{every isa} = [top color=white, bottom color=green!20, 
+                         draw=green!50!black!100, drop shadow]
+
+\begin{document}
+\begin{tikzpicture}[node distance=1cm, every edge/.style={link}]
+\node[entity] (mov) {Movie};
+\node[attribute] [below left=of mov] {Language} edge (mov);
+\node[attribute] [above left=of mov] {\key{Title}} edge (mov);
+\node[attribute] [above right=of mov] {\key{DateOfRelease}} edge (mov);
+\node[relationship] (is) [right=of mov] {Is} edge (mov);
+\node[entity] (gnr) [below=0.5cm of is] {Genre} edge (is);
+\node[attribute] [below=0.5cm of gnr] {\key{Name}} edge (gnr);
+\node[relationship] (rates) [above=2cm of mov] {Rates} edge (mov);
+\node[attribute] [above left=of rates] {Value} edge (rates);
+\node[entity] (user) [right=2cm of rates] {User} edge (rates);
+\node[attribute] [above left=of user] {Username} edge (user);
+\node[attribute] [above=of user] {Password} edge (user);
+\node[attribute] [above right=of user] {\key{Email}} edge (user);
+\node[ident relationship] (in) [below=3cm of mov] {In} edge[->] (mov);
+\node[entity] (pers) [below=4cm of in] {Person} edge[<-] (in);
+\node[attribute] (name) [below left=of pers] {Name} edge (pers);
+\node[attribute] [below left=of name] {\key{Firstname}} edge (name);
+\node[attribute] [below=of name] {\key{Surname}} edge (name);
+\node[attribute] [below=of pers] {\key{DateOfBirth}} edge (pers);
+\node[derived attribute] [below right=of pers] {Age} edge (pers);
+\node[attribute] [above left=of pers] {Gender} edge (pers);
+\node[weak entity] (Role) [right=4cm of in] {Role} edge[total] (in);
+\node[attribute] [above=of Role] {\discriminator{RoleId}} edge (Role);
+\node[relationship] (nom) [left=4cm of mov] {Nominated} edge[->] (mov);
+\draw[link] (nom) |- (pers);
+\node[entity] (org) [above=2cm of nom] {Organization} edge (nom);
+\node[attribute] [above=of org] {\key{Name}} edge (org);
+\node[attribute] [above left=of nom] {Won} edge (nom);
+\node[attribute] [above right=of nom] {Year} edge (nom);
+\node[entity] (awrd) [below left=of nom] {Award};
+\draw[link] (awrd) |- (nom);
+\node[attribute] [below=of awrd] {\key{Type}} edge (awrd);
+\node[isa] (roleisa) [below=of Role] {ISA} edge[->] (Role);
+\node[entity] (dir) [below=of roleisa] {Director} edge[->] (roleisa);
+\node[entity] [left=of dir] {Writer} edge[->] (roleisa);
+\node[entity] (act) [right=of dir] {Actor} edge[->] (roleisa);
+\node[attribute] [below=of act] {PartName} edge (act);
+\end{tikzpicture}
+\end{document}
