@@ -3,3 +3,20 @@
 \includegraphics[width=\textwidth]{ER.pdf}
 
 \section{Relations}
+
+\subsection{Keys}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Entity Type} & \textbf{Candidate keys} \\ \hline
+Movie & \underline{DateOfRelease, Title} \\ \hline
+Person & \underline{FirstName, LastName, DateOfBirth} \\ \hline
+Role & \underline{ID} \\ \hline
+Award & \underline{Title} \\ \hline
+Organization & \underline{Name} \\ \hline
+User & \underline{Email} \newline Username \\ \hline
+\end{tabular}
+\caption{Candidate keys. Primary keys are underlined}
+\label{tbl:candidate_keys}
+\end{table}
