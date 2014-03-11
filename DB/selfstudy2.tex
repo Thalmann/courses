@@ -1,0 +1,62 @@
+User: {[Email: string, Username: string, Password: string]}
+
+Movie: {[DateOfRelease: datetime, Title: string, Language: string]}
+
+Rates: {[ DateOfRelease: datetime, Title: string, Email $ \rightarrow $ User, Value: integer]}
+
+Foreign key {DOR, Title}  $ \rightarrow $ {Movie.DateOfRelease, Movie.Title}
+
+Genre: {[Name: string]}
+
+Has: {[Title: string, DateOfRelease: datetime, Name: string $ \rightarrow $ User, Language: string]}
+	Foreign key {DateOfRelease, Title} $ \rightarrow $ {Movie.DateOfRelease, Movie.Title}
+
+Role: {[RoleId: integer, DateOfRelease: datetime, Title: string, FirstName: string, LastName:string,
+
+DateOfBirth: datetime]}
+
+Foreign key {DateOfRelease, Title} $ \rightarrow $ {Movie.DateOfRelease, Movie.Title}
+	{FirstName, LastName, DateOfBirth} $ \rightarrow $ {Person.FirstName, Person.LastName, 
+Person.DateOfBirth}
+
+Director: {[ID]}
+
+Writer: {[ID]}
+
+Actor: {[ID, PartName]}
+
+Person: {[FirstName: string, LastName: string, DateOfBirth: datetime, 
+Gender: boolean, Age:int]}
+
+Organization: {[Name: string]}
+
+Award: {[Title: string]}
+
+Nominated: {[Type $ \rightarrow $ Award, Name $ \rightarrow $ Organization, DateOfRelease: datetime, Title: string, FirstName, LastName, DateOfBirth, Year: int, Won: boolean,]}
+
+Foreign key {Title,DateOfRelease} $ \rightarrow $ {Movie.Title, Movie.DateOfRelease}
+		{FirstName, LastName, DateOfBirth} $ \rightarrow $ {Person.FirstName, Person.LastName, 
+Person.DateOfBirth}
+
+\paragraph{Keys}
+
+\begin{tabular}{| c | c |}
+\hline
+EntityType & Candidate keys\\
+\hline 
+\hline
+Movie & \underline{DateOfRelease}, Title\\
+\hline
+Person & \underline{FirstName, LastName, DateOfBirth}\\
+\hline
+Role & \underline{ID}\\
+\hline
+\hline 
+Award & \underline{Title}\\
+\hline
+Organization & \underline{Name}\\
+\hline
+User & \underline{Email}, Username\\
+\hline
+\end{tabular}
+
