@@ -1,0 +1,66 @@
+\section{Entity Relationship Diagram}
+
+\includegraphics[width=\textwidth]{ER.pdf}
+
+\section{Relations}
+\begin{itemize}
+\item User: \{[\underline{Email: string}, Username: string, Password: string]\}
+
+\item Movie: \{[\underline{DateOfRelease: datetime, Title: string}, Language: string]\}
+
+\item Rates: \{[\underline{DateOfRelease: datetime, Title: string, Email $ \rightarrow $ User}, Value: integer]\}
+
+Foreign key \{DOR, Title\}  $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
+
+\item Genre: \{[\underline{Name: string}]\}
+
+\item Has: \{[\underline{Title: string, DateOfRelease: datetime, Name: string $ \rightarrow $ User}, Language: string]\}
+	Foreign key \{DateOfRelease, Title\} $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
+
+\item Role: \{[\underline{RoleId: integer, DateOfRelease: datetime, Title: string, FirstName: string, LastName:string}, DateOfBirth: datetime]\}
+
+Foreign key \{DateOfRelease, Title\} $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
+
+\{FirstName, LastName, DateOfBirth\} $ \rightarrow $ \{Person.FirstName, Person.LastName, Person.DateOfBirth\}
+
+\item Director: \{[\underline{ID}]\}
+
+\item Writer: \{[\underline{ID}]\}
+
+\item Actor: \{[\underline{ID}, PartName]\}
+
+\item Person: \{[\underline{FirstName: string, LastName: string, DateOfBirth: datetime}, Gender: boolean, Age:int]\}
+
+\item Organization: \{[\underline{Name: string}]\}
+
+\item Award: \{[\underline{Title: string}]\}
+
+\item Nominated: \{[\underline{Type $ \rightarrow $ Award, Name $ \rightarrow $ Organization, DateOfRelease: datetime, Title: string, FirstName, LastName, DateOfBirth}, Year: int, Won: boolean,]\}
+
+Foreign key \{Title,DateOfRelease\} $ \rightarrow $ \{Movie.Title, Movie.DateOfRelease\}
+		\{FirstName, LastName, DateOfBirth\} $ \rightarrow $ \{Person.FirstName, Person.LastName, 
+Person.DateOfBirth\}
+\end{itemize}
+
+\paragraph{Keys}
+
+\begin{tabular}{| c | c |}
+\hline
+EntityType & Candidate keys\\
+\hline 
+\hline
+Movie & \underline{DateOfRelease}, Title\\
+\hline
+Person & \underline{FirstName, LastName, DateOfBirth}\\
+\hline
+Role & \underline{ID}\\
+\hline
+\hline 
+Award & \underline{Title}\\
+\hline
+Organization & \underline{Name}\\
+\hline
+User & \underline{Email}, Username\\
+\hline
+\end{tabular}
+
