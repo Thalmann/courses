@@ -17,13 +17,16 @@
 \begin{document}
 \begin{tikzpicture}[node distance=1cm, every edge/.style={link}]
 \node[entity] (mov) {Movie};
-\node[attribute] [below left=of mov] {Language} edge (mov);
-\node[attribute] [above left=of mov] {\key{Title}} edge (mov);
-\node[attribute] [above right=of mov] {\key{DateOfRelease}} edge (mov);
-\node[relationship] (is) [right=of mov] {Is} edge (mov);
+\node[attribute] [above left=0.7cm and -0.5cm of mov] {Language} edge (mov);
+\node[attribute] [above right=2cm and -0.5cm of mov] {\key{Title}} edge (mov);
+\node[attribute] [above right=1cm and 1cm of mov] {\key{DateOfRelease}} edge (mov);
+\node[relationship] (refers) [right=of mov] {RefersTo};
+\node[attribute] [right=of refers] {Type} edge (refers);
+\draw[link] (mov.14) edge (refers.160) (refers.-160) edge (mov.-14);
+\node[relationship] (is) [below left=of mov] {Is} edge (mov);
 \node[entity] (gnr) [below=0.5cm of is] {Genre} edge (is);
 \node[attribute] [below=0.5cm of gnr] {\key{Name}} edge (gnr);
-\node[relationship] (rates) [above=2cm of mov] {Rates} edge (mov);
+\node[relationship] (rates) [above=3cm of mov] {Rates} edge (mov);
 \node[attribute] [above left=of rates] {Value} edge (rates);
 \node[entity] (user) [right=2cm of rates] {User} edge (rates);
 \node[attribute] [above left=of user] {Username} edge (user);
