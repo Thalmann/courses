@@ -33,7 +33,7 @@
 \node[entity] (pers) [below=4cm of in] {Person} edge[<-] (in);
 \node[attribute] (name) [below left=of pers] {Name} edge (pers);
 \node[attribute] [below left=of name] {\key{Firstname}} edge (name);
-\node[attribute] [below=of name] {\key{Surname}} edge (name);
+\node[attribute] [below=of name] {\key{Lastname}} edge (name);
 \node[attribute] [below=of pers] {\key{DateOfBirth}} edge (pers);
 \node[derived attribute] [below right=of pers] {Age} edge (pers);
 \node[attribute] [above left=of pers] {Gender} edge (pers);
