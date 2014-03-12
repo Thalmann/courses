@@ -69,24 +69,25 @@ Boo\\
 \newcommand{\solution}[3]{
 \item
 \begin{itemize}
-\item Relational algebra: #1
-\item Tuple relational calculus: #2
-\item Domain relational calculus: #3
+\item Relational algebra:\begin{align*}#1\end{align*}
+\item Tuple relational calculus: \begin{align*}#1\end{align*}
+\item Domain relational calculus: \begin{align*}#3\end{align*}
 \end{itemize}}
 \begin{enumerate}
+%Find the names of suppliers who supply some red part.
 \solution
-{$\pi_{sname}(Suppliers \Join Catalog \Join \sigma_{color=\text{'red'}}(Parts))$}
-{$
-\{s.sname | s \in Suppliers\wedge \exists c \in Catalog(s.sid = c.sid \wedge \exists p \in Parts(p.pid = c.pid \wedge p.color = \text{'red'}) ) \}
-$}
 {
-\begin{align*}
+\pi_{sname}(Suppliers \Join Catalog \Join \sigma_{color=\text{'red'}}(Parts))
+}
+{
+\{s.sname | s \in Suppliers\wedge \exists c \in Catalog(s.sid = c.sid \wedge \exists p \in Parts(p.pid = c.pid \wedge p.color = \text{'red'}) ) \}
+}
+{
 \{<name> | &\exists sid,address(<sid, sname, address> \in Suppliers\\
 &\wedge \exists sid,pid,cost(<sid,pid, cost> \in Catalog\\
 &\wedge \exists pid, pname, color(<pid,pname,color> \in Posts\\
 &\wedge color=\text{'red'}
 ))) \}
-\end{align*}
 }
 \end{enumerate}
 }
