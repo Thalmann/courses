@@ -11,6 +11,58 @@
 
 \section{Relational Algebra}
 
+\subsection{~}
+
+\begin{tabular}{lllll}
+
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{$\pi_{species, zooID}(animals)$} \\ \hline
+\textbf{species} & \textbf{zooID} \\ \hline
+giraffe & 1 \\ \hline
+giraffe & 2 \\ \hline
+giraffe & 3 \\ \hline
+ape & 1 \\ \hline
+ape & 2 \\ \hline
+owl & 2 \\ \hline
+owl & 1 \\ \hline
+\end{tabular}
+&
+$\div$
+&
+\begin{tabular}{|c|}
+\hline
+$\pi_{zooID}(\sigma_{country='Germany'}(zoos))$ \\ \hline
+\textbf{zooID} \\ \hline
+1 \\ \hline
+\end{tabular}
+&
+$=$
+&
+\begin{tabular}{|l|}
+\hline
+\textbf{species} \\ \hline
+giraffe \\ \hline
+ape \\ \hline
+owl \\ \hline
+\end{tabular}
+
+\end{tabular}
+
+\subsection{~}
+
+\begin{tabular}{| c |}
+\hline 
+\textbf{nickname}\\
+\hline
+Uhu\\
+\hline
+Jahoo\\
+\hline 
+Boo\\
+\hline
+\end{tabular}
+
 \section{Relational Calculus}
 
 \section{Functional Dependencies}
