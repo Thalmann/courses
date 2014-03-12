@@ -8,7 +8,7 @@
 
 \item Movie: \{[\underline{DateOfRelease: datetime, Title: string}, Language: string]\}
 
-\item RefersTo: \{[ \underline{FromDateOfRelease: datetime, FromTitle: string, ToDateOfRelease: datetime, ToTitle: string, Type: string} ] \}
+\item RefersTo: \{[ \underline{FromDateOfRelease: datetime, FromTitle: string,}\\ \underline{ToDateOfRelease: datetime, ToTitle: string, Type: string}]\}
 
 	Foreign key \{ FromDateOfRelease, FromTitle \} $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
 	
@@ -23,7 +23,7 @@ Foreign key \{DOR, Title\}  $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
 \item Has: \{[\underline{Title: string, DateOfRelease: datetime, Name: string $ \rightarrow $ User}, Language: string]\}
 	Foreign key \{DateOfRelease, Title\} $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
 
-\item Role: \{[\underline{RoleId: integer, DateOfRelease: datetime, Title: string, FirstName: string, LastName:string}, DateOfBirth: datetime]\}
+\item Role: \{[\underline{RoleId: integer, DateOfRelease: datetime, Title: string, FirstName: string},\\ \underline{LastName:string, DateOfBirth: datetime}]\}
 
 Foreign key \{DateOfRelease, Title\} $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
 
@@ -35,13 +35,13 @@ Foreign key \{DateOfRelease, Title\} $ \rightarrow $ \{Movie.DateOfRelease, Movi
 
 \item Actor: \{[\underline{ID}, PartName]\}
 
-\item Person: \{[\underline{FirstName: string, LastName: string, DateOfBirth: datetime}, Gender: boolean, Age:int]\}
+\item Person: \{[\underline{FirstName: string, LastName: string, DateOfBirth: datetime,} Gender: boolean, Age:int]\}
 
 \item Organization: \{[\underline{Name: string}]\}
 
 \item Award: \{[\underline{Title: string}]\}
 
-\item Nominated: \{[\underline{Type $ \rightarrow $ Award, Name $ \rightarrow $ Organization, DateOfRelease: datetime, Title: string, FirstName, LastName, DateOfBirth}, Year: int, Won: boolean,]\}
+\item Nominated: \{[\underline{Type $ \rightarrow $ Award, Name $ \rightarrow $ Organization, DateOfRelease: datetime,}\\ \underline{Title: string, FirstName, LastName, DateOfBirth}, Year: int, Won: boolean,]\}
 
 Foreign key \{Title,DateOfRelease\} $ \rightarrow $ \{Movie.Title, Movie.DateOfRelease\}
 		\{FirstName, LastName, DateOfBirth\} $ \rightarrow $ \{Person.FirstName, Person.LastName, 
