@@ -8,6 +8,12 @@
 
 \item Movie: \{[\underline{DateOfRelease: datetime, Title: string}, Language: string]\}
 
+\item RefersTo: \{[ \underline{FromDateOfRelease: datetime, FromTitle: string, ToDateOfRelease: datetime, ToTitle: string, Type: string} ] \}
+
+	Foreign key \{ FromDateOfRelease, FromTitle \} $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
+	
+	Foreign key \{ ToDateOfRelease, ToTitle \} $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
+
 \item Rates: \{[\underline{DateOfRelease: datetime, Title: string, Email $ \rightarrow $ User}, Value: integer]\}
 
 Foreign key \{DOR, Title\}  $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
@@ -42,7 +48,7 @@ Foreign key \{Title,DateOfRelease\} $ \rightarrow $ \{Movie.Title, Movie.DateOfR
 Person.DateOfBirth\}
 \end{itemize}
 
-\paragraph{Keys}
+\subsection{Keys}
 
 \begin{tabular}{| c | c |}
 \hline
@@ -64,3 +70,9 @@ User & \underline{Email}, Username\\
 \hline
 \end{tabular}
 
+\section{Reflections}
+Initially we didn't have a proper overview, since we only had a bunch of tables and a lot of explanatory text.
+Now we have achieved this, by using an ER diagram.
+By using an ER diagram, a much more formal notation, we have achieved a more precise and concise way of describing the database schema.
+Additionally our initial attempt didn't show anything about cardinalities.
+We used IDs for primary keys for all entity types, now that we have learned about keys, we have found a simpler and more elegant approach.
