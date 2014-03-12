@@ -17,16 +17,19 @@
 \begin{document}
 \begin{tikzpicture}[node distance=1cm, every edge/.style={link}]
 \node[entity] (person) {Person};
-\node[attribute] [above right=of person] {\key{CPR}} edge (person);
-\node[attribute] [right=of person] {Address} edge (person);
-\node[attribute] [below right=of person] {Name} edge (person);
+\node[attribute] [above left=of person] {\key{CPR}} edge (person);
+\node[attribute] [left=of person] {Address} edge (person);
+\node[attribute] [below left=of person] {Name} edge (person);
 
-\node[relationship] (borrows) [below=of person] {Borrows};
-\node[weak entity] (copy) [below=of borrows] {Copy};
-\node[attribute] [above right=of copy] {\discriminator{CopyID}} edge (copy);
-\node[attribute] [right=of copy] {BoughtDate} edge (copy);
+\node[relationship] (borrows) [above=of person] {Borrows};
+\node[attribute] [above left=of borrows] {BorrowDate} edge (borrows);
+\node[attribute] [above=of borrows] {ReturnedDate} edge (borrows);
 
-\node[ident relationship] (is) [below=of copy] {Of};
+\node[weak entity] (copy) [right=of borrows] {Copy};
+\node[attribute] [above=of copy] {\discriminator{CopyID}} edge (copy);
+\node[attribute] [above right=of copy] {BoughtDate} edge (copy);
+
+\node[ident relationship] (is) [right=of copy] {Of};
 \node[entity] (book) [below=of is] {Book};
 \node[attribute] [above right=of book] {\key{BookID}} edge (book);
 \node[attribute] [right=of book] {Author} edge (book);
@@ -34,8 +37,8 @@
 \node[attribute] [below=of book] {Edition} edge (book);
 
 \draw[link] (person) -- node[left] {[0, *]} (borrows);
-\draw[link] (borrows) -- node[left] {[0, *]} (copy);
-\draw[link] (copy) -- node[left] {[1, 1]} (is);
-\draw[link] (is) -> node[left] {[0, *]} (book);
+\draw[link] (borrows) -- node[above] {[0, *]} (copy);
+\draw[link] (copy) -- node[above] {[1, 1]} (is);
+\draw[link, ->] (is) -- node[right] {[0, *]} (book);
 \end{tikzpicture}
 \end{document}
