@@ -67,13 +67,27 @@ Boo\\
 \section{Relational Calculus}
 {
 \newcommand{\solution}[3]{
+\item
 \begin{itemize}
 \item Relational algebra: #1
 \item Tuple relational calculus: #2
 \item Domain relational calculus: #3
 \end{itemize}}
 \begin{enumerate}
-\item \solution{$\pi_{s.name}(Suppliers)$}{arg2}{arg3}
+\solution
+{$\pi_{sname}(Suppliers \Join Catalog \Join \sigma_{color=\text{'red'}}(Parts))$}
+{$
+\{s.sname | s \in Suppliers\wedge \exists c \in Catalog(s.sid = c.sid \wedge \exists p \in Parts(p.pid = c.pid \wedge p.color = \text{'red'}) ) \}
+$}
+{
+\begin{align*}
+\{<name> | &\exists sid,address(<sid, sname, address> \in Suppliers\\
+&\wedge \exists sid,pid,cost(<sid,pid, cost> \in Catalog\\
+&\wedge \exists pid, pname, color(<pid,pname,color> \in Posts\\
+&\wedge color=\text{'red'}
+))) \}
+\end{align*}
+}
 \end{enumerate}
 }
 \section{Functional Dependencies}
