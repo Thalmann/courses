@@ -8,6 +8,12 @@
 
 \item Movie: \{[\underline{DateOfRelease: datetime, Title: string}, Language: string]\}
 
+\item RefersTo: \{[ \underline{FromDateOfRelease: datetime, FromTitle: string, ToDateOfRelease: datetime, ToTitle: string, Type: string} ] \}
+
+	Foreign key \{ FromDateOfRelease, FromTitle \} $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
+	
+	Foreign key \{ ToDateOfRelease, ToTitle \} $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
+
 \item Rates: \{[\underline{DateOfRelease: datetime, Title: string, Email $ \rightarrow $ User}, Value: integer]\}
 
 Foreign key \{DOR, Title\}  $ \rightarrow $ \{Movie.DateOfRelease, Movie.Title\}
