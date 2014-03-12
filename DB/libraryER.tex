@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\usepackage{tikz-er2}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadows}
+
+\tikzstyle{every entity} = [top color=white, bottom color=blue!30, 
+                            draw=blue!50!black!100, drop shadow]
+\tikzstyle{every weak entity} = [drop shadow={shadow xshift=.7ex, 
+                                 shadow yshift=-.7ex}]
+\tikzstyle{every attribute} = [top color=white, bottom color=yellow!20, 
+                               draw=yellow, node distance=1cm, drop shadow]
+\tikzstyle{every relationship} = [top color=white, bottom color=red!20, 
+                                  draw=red!50!black!100, drop shadow]
+\tikzstyle{every isa} = [top color=white, bottom color=green!20, 
+                         draw=green!50!black!100, drop shadow]
+
+\begin{document}
+\begin{tikzpicture}[node distance=1cm, every edge/.style={link}]
+\node[entity] (person) {Person};
+\node[attribute] [above right=of person] {\key{CPR}} edge (person);
+\node[attribute] [right=of person] {Address} edge (person);
+\node[attribute] [below right=of person] {Name} edge (person);
+
+\node[relationship] (borrows) [below=of person] {Borrows};
+\node[weak entity] (copy) [below=of borrows] {Copy};
+\node[attribute] [above right=of copy] {\discriminator{CopyID}} edge (copy);
+\node[attribute] [right=of copy] {BoughtDate} edge (copy);
+
+\node[ident relationship] (is) [below=of copy] {Of};
+\node[entity] (book) [below=of is] {Book};
+\node[attribute] [above right=of book] {\key{BookID}} edge (book);
+\node[attribute] [right=of book] {Author} edge (book);
+\node[attribute] [below right=of book] {Title} edge (book);
+\node[attribute] [below=of book] {Edition} edge (book);
+
+\draw[link] (person) -- node[left] {[0, *]} (borrows);
+\draw[link] (borrows) -- node[left] {[0, *]} (copy);
+\draw[link] (copy) -- node[left] {[1, 1]} (is);
+\draw[link] (is) -> node[left] {[0, *]} (book);
+\end{tikzpicture}
+\end{document}
