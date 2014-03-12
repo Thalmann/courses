@@ -1,6 +1,13 @@
 \section{ER Modeling}
 
 \section{Banking System}
+\begin{description}
+\item[customer:]{\{[\underline{SSN}, name, address]\}}
+\item[phone:]{\{[\underline{number}, provider, contract]\}}
+\item[has:]{\{[\underline{SSN $\rightarrow$ customer, number $\rightarrow$ phone}]\}}
+\item[account:]{\{[\underline{SSN $\rightarrow$ customer, accountNumber}, type, balance]\}}
+\item[statement:]{\{[\underline{accountNumber $\rightarrow$ account, ID}, date]\}}
+\end{description}
 
 \section{Relational Algebra}
 
