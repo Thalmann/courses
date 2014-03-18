@@ -107,3 +107,38 @@
 \section{Highest normal form}
 
 \section{SQL}
+
+\newcommand{\attribute}[4][,]{#2 & \textbf{#3} \uppercase{#4}#1\\}
+\newcommand{\primarykey}[1]{\multicolumn{2}{l}{PRIMARY KEY(#1)}\\}
+\newcommand{\foreignkey}[2]{\multicolumn{2}{l}{FOREIGN KEY(#1)} REFERENCES #2\\}
+
+\newenvironment{createSQL}[1]
+	{CREATE TABLE #1 (
+	
+	\begin{tabular}{l l} }
+	{\end{tabular}
+	
+);
+	}
+	
+
+\begin{createSQL}{User}
+\attribute{email}{varchar(50)}{primary key}
+\attribute{username}{varchar(50)}{unique not null}
+\attribute[]{password}{varchar[50]}{not null}
+\end{createSQL}
+
+\begin{createSQL}{Movie}
+\attribute{movie}{integer}{primary key}
+\attribute{dateOfRelease}{date}{}
+\attribute{title}{varchar(50)}{}
+\attribute[]{language}{varchar(30)}{}
+\end{createSQL}
+
+\begin{createSQL}{refersto}
+\attribute{from}{integer}{}
+\attribute{to}{integer}{}
+\foreignkey{from}{movie.id}
+\foreignkey{to}{movie.id}
+\end{createSQL}
+
