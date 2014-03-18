@@ -44,18 +44,18 @@
 }
 \subsection*{User}
 \begin{itemize}
-\item{\{Email\} $\rightarrow$ \{Email, Username, Password\}} candidate key
-\item{\{Username\} $\rightarrow$ \{Email, Username, Password\} candidate key}
+\derives{Email}{Email, Username, Password}{true}
+\derives{Username}{Email, Username, Password}{true}
 \end{itemize}
 
 \subsection*{Movie}
 \begin{itemize}
-\item{\{Id\} $\rightarrow$ \{Id, DateOfRelease, Title, Language\} candidate key}
+\derives{Id}{Id, DateOfReleasem, Title, Language}{true}
 \end{itemize}
 
 \subsection*{RefersTo}
 \begin{itemize}
-\item{\{From, To\} $\rightarrow$ \{From, To\} candidate key}
+\derives{From, To}{From, To}{true}
 \end{itemize}
 
 \subsection*{Rates}
