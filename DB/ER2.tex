@@ -40,7 +40,8 @@
 \node[attribute] [below=of name] {\key{Lastname}} edge (name);
 \node[attribute] [below=of pers] {\key{DateOfBirth}} edge (pers);
 \node[derived attribute] [below right=of pers] {Age} edge (pers);
-\node[attribute] [above left=of pers] {Gender} edge (pers);
+\node[attribute] [above left=1.6cm and -0.5cm of pers] {Gender} edge (pers);
+\node[attribute] [above left=0.7cm and 0.5cm of pers] {\key{ Id }} edge (pers);
 \node[weak entity] (Role) [right=4cm of in] {Role} edge[total] node[above] {[1, 1]} (in);
 \node[attribute] [above=of Role] {\discriminator{ Id }} edge (Role);
 \node[relationship] (nom) [left=4cm of mov] {Nominated} edge[->] node[above] {[0, *]} (mov);
