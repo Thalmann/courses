@@ -67,7 +67,42 @@ Boo\\
 \end{tabular}
 
 \section{Relational Calculus}
+{
+\newcommand{\solution}[3]{
+\item
+\begin{itemize}
+\item Relational algebra:\begin{align*}#1\end{align*}
+\item Tuple relational calculus: \begin{align*}#2\end{align*}
+\item Domain relational calculus: \begin{align*}#3\end{align*}
+\end{itemize}}
+\begin{enumerate}
+%Find the names of suppliers who supply some red part.
+\solution
+{
+\pi_{sname}(Suppliers \Join Catalog \Join \sigma_{color=\text{'red'}}(Parts))
+}
+{
+\{s.sname | s \in Suppliers\wedge \exists c \in Catalog(s.sid = c.sid \wedge \exists p \in Parts(p.pid = c.pid \wedge p.color = \text{'red'}) ) \}
+}
+{
+\{<name> | &\exists sid,address(<sid, sname, address> \in Suppliers\\
+&\wedge \exists sid,pid,cost(<sid,pid, cost> \in Catalog\\
+&\wedge \exists pid, pname, color(<pid,pname,color> \in Posts\\
+&\wedge color=\text{'red'}
+))) \}
+}
 
+%Find the sids of suppliers who supply some red or green part
+\solution
+{\pi_{sid}(Supplier \Join Catalog \Join \sigma_{color=\text{'red'} \vee color=\text{'green'}}(Parts))}
+{\{
+s.sid | s \in Suppliers \wedge \exists c \in Catalog(s.sid = c.sid) \wedge \exists p \in Parts(p.color=\text{'red'} \vee color=\text{'green'})
+\}}
+{\{
+<s> | \exists n,a (<s,n,a> \in Suppliers \vee \exists p.color(<s,p,c> \in Catalog \wedge \exists pn,co(<p,pn,co> \in Parts \vee co=\text{'red'} \vee co=\text{'green'})))
+\}}
+\end{enumerate}
+}
 \section{Functional Dependencies}
 \begin{tabular}{|c|c|}
 \hline
