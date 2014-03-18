@@ -102,9 +102,19 @@
 \derives{Type, Name, MovieId, PersonId}{Type, Name, MovieId, PersonId, Year, Won}{true}
 \end{dependencies}
 }
-\section{3NF}
-
 \section{Highest normal form}
+The functional dependencies (\textbf{FD}s) listed above are all candidate keys (their left-hand-side are candidate keys).
+Because of this we have that they are all in BCNF.\\
+The definition of BCNF is:
+\begin{definition}
+A relational schema $\mathcal{R}$ is in BCNF if at least one of the following conditions holds for each of its FDs $\alpha \rightarrow B$ with $B \in \mathcal{R}$:
+\begin{enumerate}
+\item $B \in \alpha$
+\item $\alpha$ is a super key of $\mathcal{R}$
+\end{enumerate}
+\end{definition}
+Since the left-hand-sides of all our FDs are candidate keys, they are also super keys.
+Thus all relational schemas are in BCNF.
 
 \section{SQL}
 
