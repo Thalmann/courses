@@ -21,11 +21,11 @@
 
 Foreign key \{FirstName, LastName, DateOfBirth\} $ \rightarrow $ \{Person.FirstName, Person.LastName, Person.DateOfBirth\}
 
-\item Director: \{[\underline{Id}]\}
+\item Director: \{[\underline{Id} $ \rightarrow $ Role]\}
 
-\item Writer: \{[\underline{Id}]\}
+\item Writer: \{[\underline{Id}$ \rightarrow $ Role]\}
 
-\item Actor: \{[\underline{Id}, PartName]\}
+\item Actor: \{[\underline{Id}$ \rightarrow $ Role, PartName]\}
 
 \item Person: \{[\underline{FirstName: string, LastName: string, DateOfBirth: datetime,} Gender: boolean, Age:int]\}
 
