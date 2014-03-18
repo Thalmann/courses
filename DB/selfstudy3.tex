@@ -1,3 +1,5 @@
+\def\arraystretch{1.25}
+
 \section{ER Modeling}
 \includegraphics{libraryER.pdf}
 
@@ -102,3 +104,14 @@ s.sid | s \in Suppliers \wedge \exists c \in Catalog(s.sid = c.sid) \wedge \exis
 \end{enumerate}
 }
 \section{Functional Dependencies}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{FD} & \textbf{OK or violated?} \\ \hline
+$A \rightarrow C$ & \textit{violated: tuples 3,4} \\ \hline
+$B \rightarrow A$ &  \\ \hline
+$C \rightarrow A$ &  \\ \hline
+$A \rightarrow B$ &  \\ \hline
+$B \rightarrow C$ &  \\ \hline
+$BC \rightarrow A$ &  \\ \hline
+$AC \rightarrow B$ &  \\ \hline
+\end{tabular}
