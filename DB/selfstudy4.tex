@@ -60,17 +60,17 @@
 
 \subsection*{Rates}
 \begin{itemize}
-\item \{MovieId, Email\} $\rightarrow$ \{MovieId, Email, Value\}
+\derives{MovieId, Email}{MovieId, Email, Value}{true}
 \end{itemize}
 
 \subsection*{Genre}
 \begin{itemize}
-\item \{Name\} $\rightarrow$ \{Name\}
+\derives{Name}{Name}{true}
 \end{itemize}
 
 \subsection*{Organization}
 \begin{itemize}
-\item{\{Name\} $\rightarrow$ \{Name\} candidate key}
+\derives{Name}{Name}{true}
 \end{itemize}
 }
 \section{3NF}
