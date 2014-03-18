@@ -1,0 +1,70 @@
+\section{Revisions}
+
+\subsection{ERD}
+
+\subsection{Relations}
+\begin{itemize}
+\item User: \{[\underline{Email: string}, Username: string, Password: string]\}
+
+\item Movie: \{[\underline{Id: integer}, DateOfRelease: datetime, Title: string, Language: string]\}
+
+\item RefersTo: \{[ \underline{From.Id $\rightarrow$ Movie, To.Id $\rightarrow$ Movie}]\}
+
+\item Rates: \{[\underline{Movie.Id $\rightarrow$ Movie, Email $ \rightarrow $ User}, Value: integer]\}
+
+\item Genre: \{[\underline{Name: string}]\}
+
+\item Is: \{[\underline{Name $\rightarrow$ Genre, Movie.Id $\rightarrow$ Movie}]\}
+
+\item Role: \{[\underline{Id: integer, Movie.Id $\rightarrow$ Movie, FirstName: string},\\ \underline{LastName:string, DateOfBirth: datetime}]\}
+
+Foreign key \{FirstName, LastName, DateOfBirth\} $ \rightarrow $ \{Person.FirstName, Person.LastName, Person.DateOfBirth\}
+
+\item Director: \{[\underline{Id}]\}
+
+\item Writer: \{[\underline{Id}]\}
+
+\item Actor: \{[\underline{Id}, PartName]\}
+
+\item Person: \{[\underline{FirstName: string, LastName: string, DateOfBirth: datetime,} Gender: boolean, Age:int]\}
+
+\item Organization: \{[\underline{Name: string}]\}
+
+\item Award: \{[\underline{Title: string}]\}
+
+\item Nominated: \{[\underline{Type $ \rightarrow $ Award, Name $ \rightarrow $ Organization, Movie.Id $\rightarrow$ Movie,}\\
+\underline{FirstName, LastName, DateOfBirth}, Year: int, Won: boolean,]\}
+
+Foreign key \{FirstName, LastName, DateOfBirth\} $ \rightarrow $ \{Person.FirstName, Person.LastName, 
+Person.DateOfBirth\}
+\end{itemize}
+
+\section{Functional dependencies}
+
+\subsection*{User}
+\begin{itemize}
+\item{$\{Email\} \rightarrow \{Email, Username, Password\}$} candidate key
+\item{$\{Username\} \rightarrow \{Password\}$ candidate key}
+\end{itemize}
+
+\subsection*{Movie}
+\begin{itemize}
+\item{$\{DateOfRelease, Title\} \rightarrow \{DateOfRelease, Title, Language\}$ candidate key}
+\end{itemize}
+
+\subsection*{RefersTo}
+\begin{itemize}
+\item{$\{FromDateOfRelease, FromTitle, ToDateOfRelease, ToTitle\}$\\
+$\rightarrow \{FromDateOfRelease, FromTitle, ToDateOfRelease, ToTitle\}$ candidate key}
+\end{itemize}
+
+\subsection*{Organization}
+\begin{itemize}
+\item{$\{Name\} \rightarrow \{Name\}$ candidate key}
+\end{itemize}
+
+\section{3NF}
+
+\section{Highest normal form}
+
+\section{SQL}
