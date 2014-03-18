@@ -17,16 +17,17 @@
 \begin{document}
 \begin{tikzpicture}[node distance=1cm, every edge/.style={link}]
 \node[entity] (mov) {Movie};
-\node[attribute] [above left=0.7cm and -0.5cm of mov] {Language} edge (mov);
-\node[attribute] [above right=2cm and -0.5cm of mov] {\key{Title}} edge (mov);
-\node[attribute] [above right=1cm and 0.8cm of mov] {\key{DateOfRelease}} edge (mov);
+\node[attribute] [above left=1.6cm and -0.5cm of mov] {Language} edge (mov);
+\node[attribute] [above left=0.7cm and 0.5cm of mov] {\key{Id}} edge (mov);
+\node[attribute] [above right=2cm and -0.5cm of mov] {Title} edge (mov);
+\node[attribute] [above right=1cm and 0.8cm of mov] {DateOfRelease} edge (mov);
 \node[relationship] (refers) [right=2.5cm of mov] {RefersTo};
 \node[attribute] [above right=of refers] {Type} edge (refers);
 \draw[link] (mov.8) edge node[above] {[0, *]} node[above, very near start] {From} (refers.170) (refers.-170) edge node[below] {[0, *]} node[below, very near end] {To} (mov.-8);
 \node[relationship] (is) [below left=of mov] {Is} edge node[below right] {[1, *]} (mov);
 \node[entity] (gnr) [below=of is] {Genre} edge node[left] {[0, *]} (is);
 \node[attribute] [below=of gnr] {\key{Name}} edge (gnr);
-\node[relationship] (rates) [above=3cm of mov] {Rates} edge node[left] {[0, *]} (mov);
+\node[relationship] (rates) [above=3cm of mov] {Rates} edge node[left, very near start] {[0, *]} (mov);
 \node[attribute] [above left=of rates] {Value} edge (rates);
 \node[entity] (user) [right=2cm of rates] {User} edge node[above] {[0, *]} (rates);
 \node[attribute] [above left=of user] {Username} edge (user);
