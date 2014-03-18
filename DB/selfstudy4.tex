@@ -17,9 +17,7 @@
 
 \item Is: \{[\underline{Name $\rightarrow$ Genre, Movie.Id $\rightarrow$ Movie}]\}
 
-\item Role: \{[\underline{Id: integer, Movie.Id $\rightarrow$ Movie, FirstName: string},\\ \underline{LastName:string, DateOfBirth: datetime}]\}
-
-Foreign key \{FirstName, LastName, DateOfBirth\} $ \rightarrow $ \{Person.FirstName, Person.LastName, Person.DateOfBirth\}
+\item Role: \{[\underline{Id: integer, Movie.Id $\rightarrow$ Movie},\\ \underline{Person.Id $ \rightarrow $ Person}]\}
 
 \item Director: \{[\underline{Id} $ \rightarrow $ Role]\}
 
@@ -27,17 +25,14 @@ Foreign key \{FirstName, LastName, DateOfBirth\} $ \rightarrow $ \{Person.FirstN
 
 \item Actor: \{[\underline{Id}$ \rightarrow $ Role, PartName]\}
 
-\item Person: \{[\underline{FirstName: string, LastName: string, DateOfBirth: datetime,} Gender: boolean, Age:int]\}
+\item Person: \{[\underline{Id: integer}, FirstName: string, LastName: string, DateOfBirth: datetime, Gender: boolean, Age:int]\}
 
 \item Organization: \{[\underline{Name: string}]\}
 
 \item Award: \{[\underline{Title: string}]\}
 
 \item Nominated: \{[\underline{Type $ \rightarrow $ Award, Name $ \rightarrow $ Organization, Movie.Id $\rightarrow$ Movie,}\\
-\underline{FirstName, LastName, DateOfBirth}, Year: int, Won: boolean,]\}
-
-Foreign key \{FirstName, LastName, DateOfBirth\} $ \rightarrow $ \{Person.FirstName, Person.LastName, 
-Person.DateOfBirth\}
+\underline{Person.Id $ \rightarrow $ Person}, Year: int, Won: boolean,]\}
 \end{itemize}
 
 \section{Functional dependencies}

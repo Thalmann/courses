@@ -44,9 +44,9 @@
 
 \node[entity] (pers) [below=4cm of in] {Person} edge[<-] node[right] {[0, *]} (in);
 \node[attribute] (name) [below left=of pers] {Name} edge (pers);
-\node[attribute] [below left=of name] {\key{Firstname}} edge (name);
-\node[attribute] [below=of name] {\key{Lastname}} edge (name);
-\node[attribute] [below=of pers] {\key{DateOfBirth}} edge (pers);
+\node[attribute] [below left=of name] {Firstname} edge (name);
+\node[attribute] [below=of name] {Lastname} edge (name);
+\node[attribute] [below=of pers] {DateOfBirth} edge (pers);
 \node[derived attribute] [below right=of pers] {Age} edge (pers);
 \node[attribute] [above left=1.6cm and -0.5cm of pers] {Gender} edge (pers);
 \node[attribute] [above left=0.7cm and 0.5cm of pers] {\key{ Id }} edge (pers);
