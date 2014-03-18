@@ -70,7 +70,7 @@ Boo\\
 \item
 \begin{itemize}
 \item Relational algebra:\begin{align*}#1\end{align*}
-\item Tuple relational calculus: \begin{align*}#1\end{align*}
+\item Tuple relational calculus: \begin{align*}#2\end{align*}
 \item Domain relational calculus: \begin{align*}#3\end{align*}
 \end{itemize}}
 \begin{enumerate}
@@ -89,6 +89,16 @@ Boo\\
 &\wedge color=\text{'red'}
 ))) \}
 }
+
+%Find the sids of suppliers who supply some red or green part
+\solution
+{\pi_{sid}(Supplier \Join Catalog \Join \sigma_{color=\text{'red'} \vee color=\text{'green'}}(Parts))}
+{\{
+s.sid | s \in Suppliers \wedge \exists c \in Catalog(s.sid = c.sid) \wedge \exists p \in Parts(p.color=\text{'red'} \vee color=\text{'green'})
+\}}
+{\{
+<s> | \exists n,a (<s,n,a> \in Suppliers \vee \exists p.color(<s,p,c> \in Catalog \wedge \exists pn,co(<p,pn,co> \in Parts \vee co=\text{'red'} \vee co=\text{'green'})))
+\}}
 \end{enumerate}
 }
 \section{Functional Dependencies}
