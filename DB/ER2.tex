@@ -18,7 +18,7 @@
 \begin{tikzpicture}[node distance=1cm, every edge/.style={link}]
 \node[entity] (mov) {Movie};
 \node[attribute] [above left=1.6cm and -0.5cm of mov] {Language} edge (mov);
-\node[attribute] [above left=0.7cm and 0.5cm of mov] {\key{Id}} edge (mov);
+\node[attribute] [above left=0.7cm and 0.5cm of mov] {\key{ Id }} edge (mov);
 \node[attribute] [above right=2cm and -0.5cm of mov] {Title} edge (mov);
 \node[attribute] [above right=1cm and 0.8cm of mov] {DateOfRelease} edge (mov);
 \node[relationship] (refers) [right=2.5cm of mov] {RefersTo};
@@ -42,7 +42,7 @@
 \node[derived attribute] [below right=of pers] {Age} edge (pers);
 \node[attribute] [above left=of pers] {Gender} edge (pers);
 \node[weak entity] (Role) [right=4cm of in] {Role} edge[total] node[above] {[1, 1]} (in);
-\node[attribute] [above=of Role] {\discriminator{RoleId}} edge (Role);
+\node[attribute] [above=of Role] {\discriminator{ Id }} edge (Role);
 \node[relationship] (nom) [left=4cm of mov] {Nominated} edge[->] node[above] {[0, *]} (mov);
 \draw[link] (nom) |- node[left] {[0, *]} (pers);
 \node[entity] (org) [above=2cm of nom] {Organization} edge node[right] {[0, *]} (nom);
