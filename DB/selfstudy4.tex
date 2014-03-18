@@ -42,21 +42,21 @@
    	{candidate key}
    	{}
 }
-\subsection*{User}
-\begin{itemize}
+\newenvironment{dependencies}[1]
+	{\subsection*{#1}\begin{itemize}}
+	{\end{itemize}}
+\begin{dependencies}{User}
 \derives{Email}{Email, Username, Password}{true}
 \derives{Username}{Email, Username, Password}{true}
-\end{itemize}
+\end{dependencies}
 
-\subsection*{Movie}
-\begin{itemize}
+\begin{dependencies}{Movie}
 \derives{Id}{Id, DateOfReleasem, Title, Language}{true}
-\end{itemize}
+\end{dependencies}
 
-\subsection*{RefersTo}
-\begin{itemize}
+\begin{dependencies}{RefersTo}
 \derives{From, To}{From, To}{true}
-\end{itemize}
+\end{dependencies}
 
 \subsection*{Rates}
 \begin{itemize}
