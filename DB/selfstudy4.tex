@@ -66,51 +66,41 @@
 \derives{Name}{Name}{true}
 \end{dependencies}
 
-\subsection*{Is}
-\begin{itemize}
+\begin{dependencies}{Is}
 \derives{Name, Movie}{Name, Movie}{true}
-\end{itemize}
+\end{dependencies}
 
-\subsection*{Role}
-\begin{itemize}
+\begin{dependencies}{Role}
 \derives{Id, MovieId, PersonId}{Id, MovieId, PersonId}{true}
-\end{itemize}
+\end{dependencies}
 
-\subsection*{Director}
-\begin{itemize}
+\begin{dependencies}{Director}
 \derives{Id}{Id}{true}
-\end{itemize}
+\end{dependencies}
 
-\subsection*{Writer}
-\begin{itemize}
+\begin{dependencies}{Writer}
 \derives{Id}{Id}{true}
-\end{itemize}
+\end{dependencies}
 
-\subsection*{Actor}
-\begin{itemize}
+\begin{dependencies}{Actor}
 \derives{Id}{Id, PartName}{true}
-\end{itemize}
+\end{dependencies}
 
-\subsection*{Person}
-\begin{itemize}
+\begin{dependencies}{Person}
 \derives{Id}{Id, FirstName, LastName, DateOfBirth, Gender}{true}
-\end{itemize}
+\end{dependencies}
 
-\subsection*{Organization}
-\begin{itemize}
 \begin{dependencies}{Organization}
 \derives{Name}{Name}{true}
 \end{dependencies}
 
-\subsection*{Award}
-\begin{itemize}
+\begin{dependencies}{Award}
 \derives{Title}{Title}{true}
-\end{itemize}
+\end{dependencies}
 
-\subsection*{Nominated}
-\begin{itemize}
+\begin{dependencies}{Nominated}
 \derives{Type, Name, MovieId, PersonId}{Type, Name, MovieId, PersonId, Year, Won}{true}
-\end{itemize}
+\end{dependencies}
 }
 \section{3NF}
 
