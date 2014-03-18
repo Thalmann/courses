@@ -82,7 +82,9 @@ Boo\\
 \pi_{sname}(Suppliers \Join Catalog \Join \sigma_{color=\text{'red'}}(Parts))
 }
 {
-\{s.sname | s \in Suppliers\wedge \exists c \in Catalog(s.sid = c.sid \wedge \exists p \in Parts(p.pid = c.pid \wedge p.color = \text{'red'}) ) \}
+\{s.sname | & s \in Suppliers \\
+&\wedge \exists c \in Catalog(s.sid = c.sid\\
+&\wedge \exists p \in Parts(p.pid = c.pid \wedge p.color = \text{'red'}) ) \}
 }
 {
 \{<name> | &\exists sid,address(<sid, sname, address> \in Suppliers\\
@@ -96,10 +98,15 @@ Boo\\
 \solution
 {\pi_{sid}(Supplier \Join Catalog \Join \sigma_{color=\text{'red'} \vee color=\text{'green'}}(Parts))}
 {\{
-s.sid | s \in Suppliers \wedge \exists c \in Catalog(s.sid = c.sid) \wedge \exists p \in Parts(p.color=\text{'red'} \vee color=\text{'green'})
+s.sid | & s \in Suppliers\\
+&\wedge \exists c \in Catalog(s.sid = c.sid)\\
+&\wedge \exists p \in Parts(p.color=\text{'red'} \vee color=\text{'green'})
 \}}
 {\{
-<s> | \exists n,a (<s,n,a> \in Suppliers \vee \exists p.color(<s,p,c> \in Catalog \wedge \exists pn,co(<p,pn,co> \in Parts \vee co=\text{'red'} \vee co=\text{'green'})))
+<s> | & \exists n,a (<s,n,a> \in Suppliers\\
+&\wedge \exists p.color(<s,p,c> \in Catalog\\
+&\wedge \exists pn,co(<p,pn,co> \in Parts\\
+&\wedge co=\text{'red'} \vee co=\text{'green'})))
 \}}
 \end{enumerate}
 }
