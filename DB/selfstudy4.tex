@@ -23,9 +23,9 @@
 
 \item Writer: \{[\underline{Id}$ \rightarrow $ Role]\}
 
-\item Actor: \{[\underline{Id}$ \rightarrow $ Role, PartName]\}
+\item Actor: \{[\underline{Id}$ \rightarrow $ Role, PartName: string]\}
 
-\item Person: \{[\underline{Id: integer}, FirstName: string, LastName: string, DateOfBirth: datetime, Gender: boolean, Age:int]\}
+\item Person: \{[\underline{Id: integer}, FirstName: string, LastName: string, DateOfBirth: datetime, Gender: boolean]\}
 
 \item Organization: \{[\underline{Name: string}]\}
 
@@ -68,9 +68,49 @@
 \derives{Name}{Name}{true}
 \end{itemize}
 
+\subsection*{Is}
+\begin{itemize}
+\derives{Name, Movie}{Name, Movie}{true}
+\end{itemize}
+
+\subsection*{Role}
+\begin{itemize}
+\derives{Id, MovieId, PersonId}{Id, MovieId, PersonId}{true}
+\end{itemize}
+
+\subsection*{Director}
+\begin{itemize}
+\derives{Id}{Id}{true}
+\end{itemize}
+
+\subsection*{Writer}
+\begin{itemize}
+\derives{Id}{Id}{true}
+\end{itemize}
+
+\subsection*{Actor}
+\begin{itemize}
+\derives{Id}{Id, PartName}{true}
+\end{itemize}
+
+\subsection*{Person}
+\begin{itemize}
+\derives{Id}{Id, FirstName, LastName, DateOfBirth, Gender}{true}
+\end{itemize}
+
 \subsection*{Organization}
 \begin{itemize}
 \derives{Name}{Name}{true}
+\end{itemize}
+
+\subsection*{Award}
+\begin{itemize}
+\derives{Title}{Title}{true}
+\end{itemize}
+
+\subsection*{Nominated}
+\begin{itemize}
+\derives{Type, Name, MovieId, PersonId}{Type, Name, MovieId, PersonId, Year, Won}{true}
 \end{itemize}
 }
 \section{3NF}
