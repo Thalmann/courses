@@ -9,15 +9,15 @@
 
 \item Movie: \{[\underline{Id: integer}, DateOfRelease: datetime, Title: string, Language: string]\}
 
-\item RefersTo: \{[ \underline{From.Id $\rightarrow$ Movie, To.Id $\rightarrow$ Movie}]\}
+\item RefersTo: \{[ \underline{From $\rightarrow$ Movie, To $\rightarrow$ Movie}]\}
 
-\item Rates: \{[\underline{Movie.Id $\rightarrow$ Movie, Email $ \rightarrow $ User}, Value: integer]\}
+\item Rates: \{[\underline{MovieId $\rightarrow$ Movie, Email $ \rightarrow $ User}, Value: integer]\}
 
 \item Genre: \{[\underline{Name: string}]\}
 
-\item Is: \{[\underline{Name $\rightarrow$ Genre, Movie.Id $\rightarrow$ Movie}]\}
+\item Is: \{[\underline{Name $\rightarrow$ Genre, MovieId $\rightarrow$ Movie}]\}
 
-\item Role: \{[\underline{Id: integer, Movie.Id $\rightarrow$ Movie}, \underline{Person.Id $ \rightarrow $ Person}]\}
+\item Role: \{[\underline{Id: integer, MovieId $\rightarrow$ Movie, PersonId $ \rightarrow $ Person}]\}
 
 \item Director: \{[\underline{Id} $ \rightarrow $ Role]\}
 
@@ -31,32 +31,33 @@
 
 \item Award: \{[\underline{Title: string}]\}
 
-\item Nominated: \{[\underline{Type $ \rightarrow $ Award, Name $ \rightarrow $ Organization, Movie.Id $\rightarrow$ Movie,}\\
-\underline{Person.Id $ \rightarrow $ Person}, Year: int, Won: boolean,]\}
+\item Nominated: \{[\underline{Type $ \rightarrow $ Award, Name $ \rightarrow $ Organization, MovieId $\rightarrow$ Movie,}\\
+\underline{PersonId $ \rightarrow $ Person}, Year: int, Won: boolean,]\}
 \end{itemize}
 
 \section{Functional dependencies}
 
 \subsection*{User}
 \begin{itemize}
-\item{$\{Email\} \rightarrow \{Email, Username, Password\}$} candidate key
-\item{$\{Username\} \rightarrow \{Password\}$ candidate key}
+\item{\{Email\} $\rightarrow$ \{Email, Username, Password\}} candidate key
+\item{\{Username\} $\rightarrow$ \{Email, Username, Password\} candidate key}
 \end{itemize}
 
 \subsection*{Movie}
 \begin{itemize}
-\item{$\{DateOfRelease, Title\} \rightarrow \{DateOfRelease, Title, Language\}$ candidate key}
+\item{\{Id\} $\rightarrow$ \{Id, DateOfRelease, Title, Language\} candidate key}
 \end{itemize}
 
 \subsection*{RefersTo}
 \begin{itemize}
-\item{$\{FromDateOfRelease, FromTitle, ToDateOfRelease, ToTitle\}$\\
-$\rightarrow \{FromDateOfRelease, FromTitle, ToDateOfRelease, ToTitle\}$ candidate key}
+\item{\{From, To\} $\rightarrow$ \{From, To\} candidate key}
 \end{itemize}
+
+\subsection*{Rates}
 
 \subsection*{Organization}
 \begin{itemize}
-\item{$\{Name\} \rightarrow \{Name\}$ candidate key}
+\item{\{Name\} $\rightarrow$ \{Name\} candidate key}
 \end{itemize}
 
 \section{3NF}
