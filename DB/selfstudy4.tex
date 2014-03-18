@@ -36,7 +36,12 @@
 \end{itemize}
 
 \section{Functional dependencies}
-
+{
+\newcommand{\derives}[3]{\item{\{#1\} $\rightarrow$ \{#2\}} 
+\ifthenelse{\equal{#3}{true}}
+   	{candidate key}
+   	{}
+}
 \subsection*{User}
 \begin{itemize}
 \item{\{Email\} $\rightarrow$ \{Email, Username, Password\}} candidate key
@@ -67,7 +72,7 @@
 \begin{itemize}
 \item{\{Name\} $\rightarrow$ \{Name\} candidate key}
 \end{itemize}
-
+}
 \section{3NF}
 
 \section{Highest normal form}
