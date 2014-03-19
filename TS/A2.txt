@@ -1,0 +1,8 @@
+Phone type:
+
+Only t-test applicable, since we have different frequencies
+t-test shows nearly identical means and standard deviation, so no significant difference between android and iphone users commue times
+
+Transport method:
+only t-test available, same argument
+t-test shows significant differences, look at means and standard deviation

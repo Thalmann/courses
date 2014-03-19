@@ -1,0 +1,11 @@
+Phone type:
+
+No significant differences
+More android users than iphone users, affects frequencies
+Boxplot quartiles would be very different
+
+Transport method:
+
+Public transport greater minimum than bike users
+Public transport much larger Q3 quartile
+Generally it takes longer time for public transport users
