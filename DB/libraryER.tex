@@ -29,7 +29,7 @@
 \node[attribute] [above=of copy] {\discriminator{CopyID}} edge (copy);
 \node[attribute] [above right=of copy] {BoughtDate} edge (copy);
 
-\node[ident relationship] (is) [right=of copy] {Of};
+\node[ident relationship] (is) [right=of copy] {Of} edge [total] node[above] {[1, 1]} (copy);
 \node[entity] (book) [below=of is] {Book};
 \node[attribute] [above right=of book] {\key{BookID}} edge (book);
 \node[attribute] [right=of book] {Author} edge (book);
@@ -38,7 +38,6 @@
 
 \draw[link] (person) -- node[left] {[0, *]} (borrows);
 \draw[link] (borrows) -- node[above] {[0, *]} (copy);
-\draw[link] (copy) -- node[above] {[1, 1]} (is);
 \draw[link, ->] (is) -- node[right] {[0, *]} (book);
 \end{tikzpicture}
 \end{document}
