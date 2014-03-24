@@ -31,7 +31,7 @@
 
 \item Award: \{[\underline{Type: string}]\}
 
-\item Nominated: \{[\underline{Type $ \rightarrow $ Award, Name $ \rightarrow $ Organization, MovieId $\rightarrow$ Movie,}\\
+\item Nominated: \{[\underline{AwardType $ \rightarrow $ Award, OrganizationName $ \rightarrow $ Organization, MovieId $\rightarrow$ Movie,}\\
 \underline{PersonId $ \rightarrow $ Person}, Year: int, Won: boolean,]\}
 \end{itemize}
 
@@ -99,7 +99,7 @@
 \end{dependencies}
 
 \begin{dependencies}{Nominated}
-\derives{Type, Name, MovieId, PersonId}{Type, Name, MovieId, PersonId, Year, Won}{true}
+\derives{AwardType, OrganizationName, MovieId, PersonId}{AwardType, OrganizationName, MovieId, PersonId, Year, Won}{true}
 \end{dependencies}
 }
 \section{Highest normal form}
@@ -222,20 +222,23 @@ Thus all relational schemas are in BCNF.
 
 \subsection*{Award}
 \begin{createSQL}{Award}
-\attribute{Title}{varchar(50)}{primary key}
+\attribute{Type}{varchar(50)}{primary key}
 \end{createSQL}
 
 \subsection*{Nominated}
 \begin{createSQL}{Nominated}
-\attribute{Type}{varchar(50)}{}
-\attribute{Name}{varchar(50)}{}
+\attribute{AwardType}{varchar(50)}{}
+\attribute{OrganizationName}{varchar(50)}{}
 \attribute{MovieId}{integer}{}
 \attribute{PersonId}{integer}{}
 \attribute{Year}{integer}{}
 \attribute{Won}{boolean}{}
-\primarykey{Type, Name, MovieId, PersonId}
-\foreignkey{Type}{Award.Title}
-\foreignkey{Name}{Organization.Name}
+\primarykey{AwardType, OrganizationName, MovieId, PersonId}
+\foreignkey{AwardType}{Award.Type}
+\foreignkey{OrganizationName}{Organization.Name}
 \foreignkey{MovieId}{Movie.Id}
 \foreignkey{PersonId}{Person.Id}
 \end{createSQL}
+
+\section{Reflections}
+Not many changes were made since the last self study, and our FDs were already following BCNF.
