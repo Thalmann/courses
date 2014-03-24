@@ -213,3 +213,28 @@ Thus all relational schemas are in BCNF.
 \attribute{DateOfBirth}{datetime}{}
 \attribute{Gender}{boolean}{}
 \end{createSQL}
+
+\subsection*{Organization}
+\begin{createSQL}{Organization}
+\attribute{Name}{varchar(50)}{primary key}
+\end{createSQL}
+
+\subsection*{Award}
+\begin{createSQL}{Award}
+\attribute{Title}{varchar(50)}{primary key}
+\end{createSQL}
+
+\subsection*{Nominated}
+\begin{createSQL}{Nominated}
+\attribute{Type}{varchar(50)}{}
+\attribute{Name}{varchar(50)}{}
+\attribute{MovieId}{integer}{}
+\attribute{PersonId}{integer}{}
+\attribute{Year}{integer}{}
+\attribute{Won}{boolean}{}
+\primarykey{Type, Name, MovieId, PersonId}
+\foreignkey{Type}{Award.Title}
+\foreignkey{Name}{Organization.Name}
+\foreignkey{MovieId}{Movie.Id}
+\foreignkey{PersonId}{Person.Id}
+\end{createSQL}
