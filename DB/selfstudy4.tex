@@ -9,7 +9,7 @@
 
 \item Movie: \{[\underline{Id: integer}, DateOfRelease: datetime, Title: string, Language: string]\}
 
-\item RefersTo: \{[ \underline{From $\rightarrow$ Movie, To $\rightarrow$ Movie}]\}
+\item RefersTo: \{[ \underline{From $\rightarrow$ Movie, To $\rightarrow$ Movie}, Type: string]\}
 
 \item Rates: \{[\underline{MovieId $\rightarrow$ Movie, Email $ \rightarrow $ User}, Value: integer]\}
 
@@ -150,6 +150,7 @@ Thus all relational schemas are in BCNF.
 \begin{createSQL}{RefersTo}
 \attribute{from}{integer}{}
 \attribute{to}{integer}{}
+\attribute{Type}{varchar(15)}{}
 \primarykey{from, to}
 \foreignkey{from}{movie.id}
 \foreignkey{to}{movie.id}
