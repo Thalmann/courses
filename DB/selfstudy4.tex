@@ -19,11 +19,11 @@
 
 \item Role: \{[\underline{Id: integer, MovieId $\rightarrow$ Movie, PersonId $ \rightarrow $ Person}]\}
 
-\item Director: \{[\underline{Id} $ \rightarrow $ Role]\}
+\item Director: \{[\underline{RoleId} $ \rightarrow $ Role]\}
 
-\item Writer: \{[\underline{Id}$ \rightarrow $ Role]\}
+\item Writer: \{[\underline{RoleId}$ \rightarrow $ Role]\}
 
-\item Actor: \{[\underline{Id}$ \rightarrow $ Role, PartName: string]\}
+\item Actor: \{[\underline{RoleId}$ \rightarrow $ Role, PartName: string]\}
 
 \item Person: \{[\underline{Id: integer}, FirstName: string, LastName: string, DateOfBirth: datetime, Gender: boolean]\}
 
@@ -131,13 +131,14 @@ Thus all relational schemas are in BCNF.
 );
 	}
 	
-
+\subsection*{User}
 \begin{createSQL}{User}
 \attribute{email}{varchar(50)}{primary key}
 \attribute{username}{varchar(50)}{unique not null}
-\attribute[]{password}{varchar[50]}{not null}
+\attribute[]{password}{varchar(50)}{not null}
 \end{createSQL}
 
+\subsection*{Movie}
 \begin{createSQL}{Movie}
 \attribute{movie}{integer}{primary key}
 \attribute{dateOfRelease}{date}{}
@@ -145,10 +146,70 @@ Thus all relational schemas are in BCNF.
 \attribute[]{language}{varchar(30)}{}
 \end{createSQL}
 
-\begin{createSQL}{refersto}
+\subsection*{RefersTo}
+\begin{createSQL}{RefersTo}
 \attribute{from}{integer}{}
 \attribute{to}{integer}{}
+\primarykey{from, to}
 \foreignkey{from}{movie.id}
 \foreignkey{to}{movie.id}
 \end{createSQL}
 
+\subsection*{Rates}
+\begin{createSQL}{Rates}
+\attribute{MovieId}{integer}{primary key}
+\attribute{Email}{varchar(50)}{not null}
+\attribute{Value}{integer}{not null}
+\foreignkey{MovieId}{movie.id}
+\foreignkey{Email}{User.Email}
+\end{createSQL}
+
+\subsection*{Genre}
+\begin{createSQL}{Genre}
+\attribute{Name}{varchar(50)}{primary key}
+\end{createSQL}
+
+\subsection*{Is}
+\begin{createSQL}{Is}
+\attribute{Name}{varchar(50)}{}
+\attribute{MovieId}{integer}{}
+\primarykey{Name, MovieId}
+\end{createSQL}
+
+\subsection*{Role}
+\begin{createSQL}{Role}
+\attribute{Id}{integer}{}
+\attribute{MovieId}{integer}{}
+\attribute{PersonId}{integer}{}
+\primarykey{Id, MovieId, PersonId}
+\foreignkey{MovieId}{Movie.Id}
+\foreignkey{PersonId}{Person.Id}
+\end{createSQL}
+
+\subsection*{Director}
+\begin{createSQL}{Director}
+\attribute{RoleId}{integer}{primary key}
+\foreignkey{RoleId}{Role.Id}
+\end{createSQL}
+
+\subsection*{Writer}
+\begin{createSQL}{Writer}
+\attribute{RoleId}{integer}{primary key}
+\foreignkey{RoleId}{Role.Id}
+\end{createSQL}
+
+\subsection*{Actor}
+\begin{createSQL}{Actor}
+\attribute{RoleId}{integer}{primary key}
+\attribute{PartName}{varchar(50)}{}
+\foreignkey{RoleId}{Role.Id}
+\end{createSQL}
+
+\subsection*{Person}
+\begin{createSQL}{Person}
+\attribute{Id}{integer}{primary key}
+\attribute{FirstName}{varchar(50)}{}
+\attribute{LastName}{varchar(50)}{}
+\attribute{DateOfBirth}{datetime}{}
+\attribute{Gender}{boolean}{}
+\end{createSQL}
