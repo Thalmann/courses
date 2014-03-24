@@ -48,7 +48,7 @@
 \node[attribute] [below=of name] {Lastname} edge (name);
 \node[attribute] [below=of pers] {DateOfBirth} edge (pers);
 \node[derived attribute] [below right=of pers] {Age} edge (pers);
-\node[attribute] [above left=1.6cm and -0.5cm of pers] {Gender} edge (pers);
+\node[attribute] [above left=1.6cm and -0.5cm of pers] {IsMale} edge (pers);
 \node[attribute] [above left=0.7cm and 0.5cm of pers] {\key{ Id }} edge (pers);
 
 \node[weak entity] (Role) [right=4cm of in] {Role} edge[total] node[above] {[1, 1]} (in);
