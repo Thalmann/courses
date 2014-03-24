@@ -29,7 +29,7 @@
 
 \item Organization: \{[\underline{Name: string}]\}
 
-\item Award: \{[\underline{Title: string}]\}
+\item Award: \{[\underline{Type: string}]\}
 
 \item Nominated: \{[\underline{Type $ \rightarrow $ Award, Name $ \rightarrow $ Organization, MovieId $\rightarrow$ Movie,}\\
 \underline{PersonId $ \rightarrow $ Person}, Year: int, Won: boolean,]\}
@@ -95,7 +95,7 @@
 \end{dependencies}
 
 \begin{dependencies}{Award}
-\derives{Title}{Title}{true}
+\derives{Type}{Type}{true}
 \end{dependencies}
 
 \begin{dependencies}{Nominated}
