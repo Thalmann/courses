@@ -29,7 +29,6 @@ The following tables have been made to replace Role, Actor, Writer and Director.
 \begin{createSQL}{WriterOf}
 \attribute{MovieId}{integer}{}
 \attribute{PersonId}{integer}{}
-\attribute{PartName}{varchar(50)}{}
 \primarykey{MovieId, PersonId}
 \foreignkey{MovieId}{Movie.Id}
 \foreignkey{PersonId}{Person.Id}
