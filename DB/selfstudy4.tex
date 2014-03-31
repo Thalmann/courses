@@ -133,27 +133,27 @@ Thus all relational schemas are in BCNF.
 	
 \subsection*{User}
 \begin{createSQL}{User}
-\attribute{email}{varchar(50)}{primary key}
-\attribute{username}{varchar(50)}{unique not null}
-\attribute[]{password}{varchar(50)}{not null}
+\attribute{Email}{varchar(50)}{primary key}
+\attribute{Username}{varchar(50)}{unique not null}
+\attribute[]{Password}{varchar(50)}{not null}
 \end{createSQL}
 
 \subsection*{Movie}
 \begin{createSQL}{Movie}
-\attribute{movie}{integer}{primary key}
-\attribute{dateOfRelease}{date}{}
-\attribute{title}{varchar(50)}{}
-\attribute[]{language}{varchar(30)}{}
+\attribute{Movie}{integer}{primary key}
+\attribute{DateOfRelease}{date}{}
+\attribute{Title}{varchar(50)}{}
+\attribute[]{Language}{varchar(30)}{}
 \end{createSQL}
 
 \subsection*{RefersTo}
 \begin{createSQL}{RefersTo}
-\attribute{from}{integer}{}
-\attribute{to}{integer}{}
+\attribute{From}{integer}{}
+\attribute{To}{integer}{}
 \attribute{Type}{varchar(15)}{}
-\primarykey{from, to}
-\foreignkey{from}{movie.id}
-\foreignkey{to}{movie.id}
+\primarykey{From, to}
+\foreignkey{From}{movie.id}
+\foreignkey{To}{movie.id}
 \end{createSQL}
 
 \subsection*{Rates}
