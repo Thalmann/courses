@@ -27,7 +27,7 @@
 
 \draw[link] (mov.8) edge node[above] {[0, *]} node[above, very near start] {From} (refers.170) (refers.-170) edge node[below] {[0, *]} node[below, very near end] {To} (mov.-8);
 
-\node[relationship] (is) [below left=of mov] {Is} edge[total] node[below right] {[1, *]} (mov);
+\node[relationship] (is) [below left=0.5cm and 2cm of mov] {Is} edge[total] node[below right] {[1, *]} (mov);
 
 \node[entity] (gnr) [below=of is] {Genre} edge node[left] {[0, *]} (is);
 \node[attribute] [below=of gnr] {\key{Name}} edge (gnr);
@@ -40,9 +40,12 @@
 \node[attribute] [above=of user] {Password} edge (user);
 \node[attribute] [above right=of user] {\key{Email}} edge (user);
 
-\node[ident relationship] (in) [below=3cm of mov] {In} edge[->] node[right] {[0, *]} (mov);
+\node[relationship] (dir) [below=2cm of mov] {Director} edge node[right] {[0, *]} (mov);
+\node[relationship] (wri) [right=of dir] {Writer} edge node[right] {[0, *]} (mov);
+\node[relationship] (act) [right=of wri] {Actor} edge node[right] {[0, *]} (mov);
+\node[attribute] [below=of act] {PartName} edge (act);
 
-\node[entity] (pers) [below=4cm of in] {Person} edge[<-] node[right] {[0, *]} (in);
+\node[entity] (pers) [below=3cm of dir] {Person} edge node[right] {[0, *]} (dir);
 \node[attribute] (name) [below left=of pers] {Name} edge (pers);
 \node[attribute] [below left=of name] {Firstname} edge (name);
 \node[attribute] [below=of name] {Lastname} edge (name);
@@ -51,8 +54,8 @@
 \node[attribute] [above left=1.6cm and -0.5cm of pers] {IsMale} edge (pers);
 \node[attribute] [above left=0.7cm and 0.5cm of pers] {\key{ Id }} edge (pers);
 
-\node[weak entity] (Role) [right=4cm of in] {Role} edge[total] node[above] {[1, 1]} (in);
-\node[attribute] [above=of Role] {\discriminator{ Id }} edge (Role);
+\draw[link] (wri) edge node[right] {[0, *]} (pers);
+\draw[link] (act) edge node[right] {[0, *]} (pers);
 
 \node[relationship] (nom) [left=4cm of mov] {Nominated} edge[->] node[above] {[0, *]} (mov);
 
@@ -67,12 +70,5 @@
 \node[attribute] [below=of awrd] {\key{Type}} edge (awrd);
 
 \draw[link] (awrd) |- node[left] {[0, *]} (nom);
-
-\node[isa] (roleisa) [below=of Role] {ISA} edge[->] (Role);
-
-\node[entity] (dir) [below=of roleisa] {Director} edge[->] (roleisa);
-\node[entity] [left=of dir] {Writer} edge[->] (roleisa);
-\node[entity] (act) [right=of dir] {Actor} edge[->] (roleisa);
-\node[attribute] [below=of act] {PartName} edge (act);
 \end{tikzpicture}
 \end{document}
