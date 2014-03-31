@@ -40,9 +40,9 @@
 \node[attribute] [above=of user] {Password} edge (user);
 \node[attribute] [above right=of user] {\key{Email}} edge (user);
 
-\node[relationship] (dir) [below=2cm of mov] {Director} edge node[right] {[0, *]} (mov);
-\node[relationship] (wri) [right=of dir] {Writer} edge node[right] {[0, *]} (mov);
-\node[relationship] (act) [right=of wri] {Actor} edge node[right] {[0, *]} (mov);
+\node[relationship] (dir) [below=2cm of mov] {DirectorOf} edge node[right] {[0, *]} (mov);
+\node[relationship] (wri) [right=of dir] {WriterOf} edge node[right] {[0, *]} (mov);
+\node[relationship] (act) [right=of wri] {ActorIn} edge node[right] {[0, *]} (mov);
 \node[attribute] [below=of act] {PartName} edge (act);
 
 \node[entity] (pers) [below=3cm of dir] {Person} edge node[right] {[0, *]} (dir);
