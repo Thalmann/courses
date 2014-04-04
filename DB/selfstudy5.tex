@@ -33,3 +33,10 @@ The following tables have been made to replace Role, Actor, Writer and Director.
 \foreignkey{MovieId}{Movie.Id}
 \foreignkey{PersonId}{Person.Id}
 \end{createSQL}
+
+\section{Changes before importing}
+
+\begin{itemize}
+\item Added sequence for all auto-generated primary keys
+\item Added DeathDate to Person.
+\end{itemize}
