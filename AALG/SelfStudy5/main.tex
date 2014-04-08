@@ -38,4 +38,27 @@ This $x_i \leq x_{i+1}$ cannot be true for $y_i \leq y_{i+1}$.
 \item $j = k + 1$
 \end{itemize}
 
+\paragraph{c.}
+$M$ is a set containing each layer, where each layer has a property $leftmost$ which gets the leftmost point in that layer.
+
+
+\begin{algorithm}[H]
+MAX\_LAYER($Q$) \\
+$S$ is a sorted stack containing all points from $Q$, with largest $x$ on top \\
+$M = \{ \}$ \\
+\While{$S$ is not empty}
+{
+	r $\leftarrow$ s.pop() \\
+	\ForEach{$m$ in $M$}
+	{
+		\If{r.y $>$ m.leftmost.y}
+		{
+			k.add(r) \\
+			break
+		}
+	}
+	m.add($\{r\}$)
+}
+\end{algorithm}
+
 \end{document}
