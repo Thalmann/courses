@@ -33,3 +33,359 @@ The following tables have been made to replace Role, Actor, Writer and Director.
 \foreignkey{MovieId}{Movie.Id}
 \foreignkey{PersonId}{Person.Id}
 \end{createSQL}
+
+\section{Importing IMDb dump}
+
+\subsection{Changes made to our schema}
+The following changes were made with the pgAdmin GUI DBMS.
+
+\begin{itemize}
+\item Added DeathDate to Person.
+\item Merged firstname and lastname into name for Person.
+\end{itemize}
+
+\subsection{Steps into importing dump}
+Firstly we imported the dump into a mysql database.
+We then found a python program for migrating a mysql database to a postgresql database.
+Finally we made a python program for loading the IMDb dump data, and insert into a database with our own schema.
+
+\section{Querying our database}
+
+\begin{enumerate}
+\item How many Danish language movies are in the database?
+
+\begin{lstlisting}
+SELECT count(*)
+FROM movie
+WHERE lower(language) = 'danish'
+\end{lstlisting}
+
+\begin{tabular}{|c|}
+\hline
+count \\ \hline
+419 \\ \hline
+\end{tabular}
+
+\item For each year, what is the total number of reviews to movies from that year?
+
+\begin{lstlisting}
+SELECT EXTRACT(year from dateofrelease) releaseyear, COUNT(movieid) totalreviews
+FROM movie, rates
+WHERE movie.id = rates.movieid
+GROUP BY releaseyear
+ORDER BY releaseyear ASC
+\end{lstlisting}
+
+\begin{tabular}{|r|r|}
+\hline
+releaseyear & totalreviews \\ \hline
+1964 & 1 \\ \hline
+1991 & 6 \\ \hline
+1992 & 3 \\ \hline
+1993 & 4 \\ \hline
+1994 & 33 \\ \hline
+1995 & 19 \\ \hline
+1996 & 2 \\ \hline
+1997 & 11 \\ \hline
+1998 & 25 \\ \hline
+1999 & 48 \\ \hline
+\end{tabular}
+
+
+\item Which movies have John Travolta and Uma Thurman starred in together?
+
+\begin{lstlisting}
+SELECT title
+FROM movie
+WHERE id IN
+	(SELECT DISTINCT movieid
+	FROM actorin, person
+	WHERE actorin.personid = person.id
+	AND name = 'John Travolta')
+AND id IN
+	(SELECT movieid
+	FROM actorin, person
+	WHERE actorin.personid = person.id
+	AND name = 'Uma Thurman')
+ORDER BY title ASC
+\end{lstlisting}
+
+\begin{tabular}{|c|}
+\hline
+title \\ \hline
+"E! True Hollywood Story" \\ \hline
+"Ellen: The Ellen DeGeneres Show" \\ \hline
+"Entertainment Tonight" \\ \hline
+"Friday Night with Jonathan Ross" \\ \hline
+"GMTV" \\ \hline
+"Good Morning America" \\ \hline
+"HBO First Look" \\ \hline
+"Late Show with David Letterman" \\ \hline
+"Live with Regis and Kathie Lee" \\ \hline
+"The Charlie Rose Show" \\ \hline
+\end{tabular}
+
+\item How many actors and directors have a ﬁrst name starting with “Q”?
+
+\begin{lstlisting}
+SELECT COUNT(*)
+FROM person
+WHERE id IN
+	(SELECT personid FROM actorin
+	UNION DISTINCT
+	SELECT personid FROM directorof)
+AND name LIKE 'Q%'
+\end{lstlisting}
+
+\begin{tabular}{|c|}
+\hline
+count \\ \hline
+153 \\ \hline
+\end{tabular}
+
+\item How many users rated at least 3 movies?
+
+\begin{lstlisting}
+SELECT count(email)
+FROM 
+	(SELECT email
+	FROM rates
+	GROUP BY email
+	HAVING count(movieid) >= 3
+	) users
+\end{lstlisting}
+
+\begin{tabular}{|c|}
+\hline
+count \\ \hline
+34 \\ \hline
+\end{tabular}
+
+\item What is the name and birth year of all actors in “Pulp Fiction”? Your query should list the actors in increasing order of birth year.
+
+\begin{lstlisting}
+SELECT name, extract(year from dateofbirth) birthyear
+FROM movie, actorin, person
+WHERE movie.id = actorin.movieid
+AND actorin.personid = person.id
+AND movie.title = 'Pulp Fiction'
+ORDER BY birthyear ASC
+\end{lstlisting}
+
+\begin{tabular}{|l|r|}
+\hline
+name & birthyear \\ \hline
+Emil Sitka & 1914 \\ \hline
+Harvey Keitel & 1939 \\ \hline
+Rene Beard & 1941 \\ \hline
+Christopher Walken & 1943 \\ \hline
+Joseph Pilato & 1949 \\ \hline
+Brenda Hillhouse & 1953 \\ \hline
+John Travolta & 1954 \\ \hline
+Bruce Willis & 1955 \\ \hline
+Lawrence Bender & 1957 \\ \hline
+Amanda Plummer & 1957 \\ \hline
+\end{tabular}
+
+
+\item What are the titles and years of all movies from the 1980s that John Travolta starred in?
+
+\begin{lstlisting}
+SELECT title, extract(year from dateofrelease) releaseyear
+FROM movie, person, actorin
+WHERE movie.id = actorin.movieid
+AND person.id = actorin.personid
+AND person.name = 'John Travolta'
+AND extract(year from dateofrelease) BETWEEN 1980 AND 1989
+\end{lstlisting}
+
+\begin{tabular}{|l|r|}
+\hline
+name & releaseyear \\ \hline
+"The Oprah Winfrey Show" & 1986 \\ \hline
+"Entertainment Tonight" & 1981 \\ \hline
+"Larry King Live" & 1985 \\ \hline
+Two of a Kind & 1983 \\ \hline
+"Biography" & 1987 \\ \hline
+Look Who's Talking & 1989 \\ \hline
+Staying Alive & 1983 \\ \hline
+That's Dancing! & 1985 \\ \hline
+Urban Cowboy & 1980 \\ \hline
+The Experts & 1989 \\ \hline
+\end{tabular}
+
+\item What are the top-2 highest rated movies (average) from the 1990s according to the users?
+
+\begin{lstlisting}
+SELECT title
+FROM movie, rates
+WHERE movie.id = rates.movieid
+AND extract(year from dateofrelease) BETWEEN 1990 AND 1999
+GROUP BY title
+ORDER BY avg(value) desc
+LIMIT 2
+\end{lstlisting}
+
+\begin{tabular}{|l|}
+\hline
+title \\ \hline
+The Usual Suspects \\ \hline
+The Shawshank Redemption \\ \hline
+\end{tabular}
+
+\item What are the top-2 highest rated movies (average) from the 1990s according to at least 2 users?
+
+\begin{lstlisting}
+SELECT title
+FROM movie, rates
+WHERE movie.id = rates.movieid
+AND extract(year from dateofrelease) BETWEEN 1990 AND 1999
+GROUP BY title
+HAVING count(email) >= 2
+ORDER BY avg(value) desc
+LIMIT 2
+\end{lstlisting}
+
+\begin{tabular}{|l|}
+\hline
+title \\ \hline
+The Usual Suspects \\ \hline
+The Shawshank Redemption \\ \hline
+\end{tabular}
+
+\item In 1994, what was the average rating of a movie for each language?
+
+\begin{lstlisting}
+SELECT language, AVG(value) avgrating
+FROM movie, rates
+WHERE movie.id = rates.movieid
+AND EXTRACT(year from dateofrelease) = 1994
+GROUP BY language
+ORDER BY language
+\end{lstlisting}
+
+\begin{tabular}{|l|r|}
+\hline
+language & avg \\ \hline
+\texttt{null} & 7.0000000000000000 \\ \hline
+English & 8.3043478260869565 \\ \hline
+French & 9.0000000000000000 \\ \hline
+\end{tabular}
+
+\item Which actors in Pulp Fiction have never, before or after, starred in the same movie as one of the other actors in “Pulp Fiction”?
+\item Which movie starring John Travolta has the highest user ratings?
+
+\begin{lstlisting}
+SELECT title
+FROM movie, person, actorin, rates
+WHERE movie.id = actorin.movieid
+AND person.id = actorin.personid
+AND movie.id = rates.movieid
+AND name = 'John Travolta'
+GROUP BY title
+ORDER BY avg(value) DESC
+LIMIT 1
+\end{lstlisting}
+
+\begin{tabular}{|l|}
+\hline
+title \\ \hline
+Pulp Fiction \\ \hline
+\end{tabular}
+
+\item How many actresses have not been alive at the same time as Charles Chaplin?
+
+\begin{lstlisting}
+SELECT COUNT(id)
+FROM person
+WHERE gender = 'f'
+AND (dateofbirth > 
+	(SELECT dateofdeath
+	FROM person
+	WHERE name = 'Charles Chaplin')
+OR dateofdeath <
+	(SELECT dateofbirth
+	FROM person
+	WHERE name = 'Charles Chaplin')
+)
+\end{lstlisting}
+
+\begin{tabular}{|c|}
+\hline
+count \\ \hline
+5405 \\ \hline
+\end{tabular}
+
+\item What is the average rating of movies from each genre?
+
+\begin{lstlisting}
+SELECT name, AVG(value) avgrating
+FROM "is", rates
+WHERE "is".movieid = rates.movieid
+GROUP BY name
+ORDER BY name
+\end{lstlisting}
+
+\begin{tabular}{|l|r|}
+\hline
+name & avgrating \\ \hline
+Action & 7.5438596491228070 \\ \hline
+Adventure & 7.4210526315789474 \\ \hline
+Animation & 7.2352941176470588 \\ \hline
+Biography & 8.1333333333333333 \\ \hline
+Comedy & 7.2380952380952381 \\ \hline
+Crime & 8.3949579831932773 \\ \hline
+Drama & 7.8333333333333333 \\ \hline
+Family & 7.2352941176470588 \\ \hline
+Fantasy & 7.2429906542056075 \\ \hline
+History & 8.1250000000000000 \\ \hline
+\end{tabular}
+
+\item What is the average rating of movies from each genre? List only genres with at least 2 ratings.
+
+\begin{lstlisting}
+SELECT name, AVG(value)
+FROM "is", rates
+WHERE "is".movieid = rates.movieid
+GROUP BY name
+HAVING count(value) >= 2
+ORDER BY name
+\end{lstlisting}
+
+\begin{tabular}{|l|r|}
+\hline
+name & avgrating \\ \hline
+Action & 7.5438596491228070 \\ \hline
+Adventure & 7.4210526315789474 \\ \hline
+Animation & 7.2352941176470588 \\ \hline
+Biography & 8.1333333333333333 \\ \hline
+Comedy & 7.2380952380952381 \\ \hline
+Crime & 8.3949579831932773 \\ \hline
+Drama & 7.8333333333333333 \\ \hline
+Family & 7.2352941176470588 \\ \hline
+Fantasy & 7.2429906542056075 \\ \hline
+History & 8.1250000000000000 \\ \hline
+\end{tabular}
+
+\item Which movie has the largest number of 2-link references? (If A refers to B, and B refers to C, then we say that A has a 2-link reference, through B, to C. If there are several paths leasing from A to C, we count all of them.)
+\item How many actors have also been active as director of at least one movie?
+
+\begin{lstlisting}
+SELECT COUNT(*)
+FROM person
+WHERE id IN
+	(SELECT personid
+	FROM actorin)
+AND id IN
+	(SELECT personid
+	FROM directorof)
+\end{lstlisting}
+
+\begin{tabular}{|c|}
+\hline
+count \\ \hline
+5930 \\ \hline
+\end{tabular}
+
+\item Which two genres are most often linked to the same movie? (Note that each movie has a set of genres.)
+\end{enumerate}
