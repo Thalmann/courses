@@ -1,0 +1,41 @@
+\include{Preamble}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\begin{document}
+
+\begin{titlepage}
+\centering
+{\LARGE Advanced Algorithms - Self-Study 5}
+\HRule \\[0.5cm]
+Bruno Thalmann\\
+			Mikael E. Christensen\\
+			Mikkel S. Larsen\\
+			Stefan M. G. Micheelsen\\
+			Martin Rasmussen\\
+			Kasper Lind Sørensen			
+\end{titlepage}
+
+\section*{CLRS 33-2}
+\paragraph{a.}We consider the leftmost point in layer $i$ and layer $i+1$.
+The points are denoted as $p_i = (x_i, y_i)$ and $p_{i +1} = (x_{i +1}, y_{i +1})$ respectively.
+We wish to show that $y_i > y_{i +1}$.
+We do so by showing that $y_i \leq y_{i +1}$ cannot be true.
+
+We split into two cases:
+\begin{itemize}
+\item \textbf{Assume} that $x_i > x_{i+1}$.
+\\This assumption means that $p_{i+1}$ is not dominated by $p_i$.
+But as $p_i$ is the leftmost point in layer $i$, this would mean that $p_{i+1}$ is part of layer $i$.
+Thus we have a contradiction and $x_i > x_{i+1}$ cannot be true for $y_i \leq y_{i+1}$.
+\item \textbf{Assume} that $x_i \leq x_{i+1}$.
+\\This assumption means that $p_i$ is dominated by $p_{i+1}$.
+This gives a direct contradiction as $p_{i+1}$ dominates $p_i$.
+This $x_i \leq x_{i+1}$ cannot be true for $y_i \leq y_{i+1}$.
+\end{itemize}
+
+\paragraph{b.}We divide into the two cases described by the exercise:
+\begin{itemize}
+\item $j \leq k$: We have that $y_j < y$, thus the new point cannot be part of layer $L_{j+1} \dots L_k$
+\item $j = k + 1$
+\end{itemize}
+
+\end{document}
