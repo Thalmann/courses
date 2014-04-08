@@ -37,7 +37,8 @@ This $x_i \leq x_{i+1}$ cannot be true for $y_i \leq y_{i+1}$.
 \item $j \leq k$: We have that $y_j < y$, thus the new point cannot be part of layers $L_{j+1}, L_{j+2} \dots L_k$ as per the the proof above.
 Since $j$ is the minimum index such that $y_j < y$ it must also be true that the new point cannot be part of layers $L_{j-1}, L_{j-2} \dots L_1$.
 Thus the point must be part of layer $L_j$.
-\item $j = k + 1$
+\item $j = k + 1$: We have that $y < y_k$, thus the new point cannot be part of layers $L_1, L_2 \dots L_k$ as per the proof above.
+Therefore it must be placed in a new layer.
 \end{itemize}
 
 \end{document}
