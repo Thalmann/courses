@@ -42,7 +42,8 @@ Therefore it must be placed in a new layer.
 \end{itemize}
 
 \paragraph{c.}
-$M$ is a set containing each layer, where each layer has a property $leftmost$ which gets the leftmost point in that layer.
+$M$ is a linkedlist containing each layer, where each layer has a property $leftmost$ which gets the leftmost point in that layer.
+The AddFirst method adds a layer as the first layer in the linked list so the ordering is kept
 
 
 \begin{algorithm}[H]
@@ -60,8 +61,14 @@ $M = \{ \}$ \\
 			break
 		}
 	}
-	m.add($\{r\}$)
+	m.addFirst($\{r\}$)
 }
 \end{algorithm}
+
+\paragraph{d.}
+
+The sorting in needs to be on x-coordinate and then by y-coordinate.
+
+The condition $ y_j < y, \ unless \ y < y_k $ (mentioned in task b) needs to be changed to $ y_j < y, \ unless \ y \leq y_k $
 
 \end{document}
