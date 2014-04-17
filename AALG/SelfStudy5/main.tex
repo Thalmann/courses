@@ -1,4 +1,9 @@
 \include{Preamble}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \begin{document}
 
@@ -70,5 +75,21 @@ $M = \{ \}$ \\
 The sorting in needs to be on x-coordinate and then by y-coordinate.
 
 The condition $ y_j < y, \ unless \ y < y_k $ (mentioned in task b) needs to be changed to $ y_j < y, \ unless \ y \leq y_k $
+
+\section*{CLRS 27-1}
+
+a)
+
+\begin{algorithm}[H]
+SumArrays(A,B,C,l,r)\\
+\eIf{r = l}
+{C[l] = A[l] + B[l]\\}
+{$ q = \floor{(l+r)/2} $\\
+spawn sumarray(A,B,C,l,q)\\
+sumarrays(A,B,C,q+1,r)\\
+sync}
+\end{algorithm}
+
+
 
 \end{document}
